@@ -1,7 +1,18 @@
 'use strict'
+
+
+// 1
+
+
 // let number = 12345;
-// let digits = number.toString().split('').join(' ')
+// let digits = number.toString().split('').join(' ') + number.slice(1)
 // console.log(digits)
+
+
+// 2
+
+
+
 // function add (a, b) {
 //     return a + b ;
 // }
@@ -25,6 +36,13 @@
 // console.log(`Віднімання: ${num1} - ${num2} = ${subtract(num1, num2)}`);
 // console.log(`Множення: ${num1} * ${num2} = ${multiply(num1, num2)}`);
 // console.log(`Ділення: ${num1} / ${num2} = ${divide(num1, num2)}`);
+
+
+
+// 3
+
+
+
 // function yourName (){
 //     let askName = prompt('your name')
 //     if (askName){
