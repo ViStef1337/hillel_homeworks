@@ -16,21 +16,21 @@ for (let i = 15; i <= 35; i++) {
 
 console.log(sum2);
 // Знайти середнє арифметичне всіх цілих чисел від 1 до 500
-let sum3 = 0
-let avg
+let sum3 = 0;
+let avg;
 
 for (let i = 1; i <= 500; i++) {
     sum3 += i;
-    avg = sum3 / 500
+    avg = sum3 / 500;
 }
 
 console.log(avg);
 // Вивести суму лише парних чисел у діапазоні від 30 до 80
 
-let sum4 = 0
+let sum4 = 0;
 for (let i = 30; i <= 80; i++) {
     if(i % 2 === 0){
-        sum4 += i
+        sum4 += i;
     }
 }
 console.log(sum4)
