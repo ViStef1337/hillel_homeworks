@@ -813,10 +813,307 @@
 // const name = 'mango'
 // console.log({name})
 
-function isDigit(s) {
-    return Number(s)
+// function isDigit(s) {
+//     return Number(s)
+// }
+//
+// // console.log(isDigit('-234.4f'))
+//
+// console.log(NaN===NaN)
+
+
+
+
+// function findAverage (nums) {
+//     let total = nums.reduce((acc, number)=>acc + number, 0);
+//     return total/nums.length
+// }
+//
+//
+// console.log(findAverage([1, 3, 5, 7]))
+//
+//
+// function firstNonConsecutive (arr) {
+//     for (let i=0;i<arr.length-1;i++) {
+//         if (arr[i + 1] - arr[i] !== 1) {
+//             return arr[i + 1]
+//         }
+//     }
+//     return null
+// }
+// console.log(firstNonConsecutive ([1,2,3,4]))
+//
+//
+//
+//
+//
+// function twoSort(s) {
+//     let sorted = [...s].sort();
+//     let firstSorted = sorted[0].split('').join('***')
+//     return firstSorted
+// }
+//
+// console.log(twoSort(["BTC","Bitcoin","Bitcoin","Classic","Classic","Classic","Classic","DarkCoin","Dogecoin","Ethereum","Factom","LiteCoin","Mine","Ripple","Waves"]))
+//
+// function findMultiples(integer, limit) {
+//     let arr = []
+//     for(let i = integer;i<=limit;i++){
+//         if(i % integer === 0 ){
+//             arr.push(i)
+//         }
+//     }
+//     return arr
+// }
+
+
+
+// function distinct(a) {
+//     return a.filter((element,index,arr)=>index===arr.indexOf(element))
+//     // let arr = []
+//     // for(let i =0;i<a.length;i++){
+//     //     if(i===a.indexOf(a[i])){
+//     //         arr.push(a[i])
+//     //     }
+//     // }
+//     // return arr
+// }
+
+
+
+
+// function addLength(str) {
+//     // const arr = str.split(' ')
+//     // return arr.map(element=>`${element} ${element.length}`)
+//     const arr = str.split(' ')
+//     let finalArr = []
+//     for(let i = 0;i<arr.length;i++){
+//         finalArr.push(`${arr[i]} ${arr[i].length}`)
+//     }
+//     return finalArr
+// }
+// console.log(addLength('apple ban'))
+
+
+
+// function rapNameGen(dob) {
+//     const day = Math.ceil((Number(dob[0])+Number(dob[1]))/2)
+//     const year = Math.ceil((Number(dob[dob.length-1])+Number(dob[dob.length-2]))/2)
+//     const obj = {
+//         0:'0ero',
+//         1:'1ne',
+//         2:'2wo',
+//         3:'3hree',
+//         4:'4our',
+//         5:'5ive',
+//         6:'6ix',
+//         7:'7even',
+//         8:'8ight',
+//         9:'9ine'
+//     }
+//     return `${obj[day]} ${obj[year]}`
+// }
+// rapNameGen('23.11.93')
+
+
+
+// function array(string) {
+//     let newStr = ''
+//     for(let i=1;i<string.length-1;i++){
+//         newStr+=string[i]
+//     }
+//     const updateStr = newStr.replaceAll(',',' ').trim()
+//     console.log(updateStr)
+// }
+// array('1,2,3,4')
+
+
+// function array(string) {
+//     const arr = string.split(',')
+//     let newStr = ''
+//     for(let i=1;i<arr.length-1;i++){
+//         newStr+=arr[i]
+//     }
+//     console.log([...newStr].join(' '))
+// }
+// array('1,2,3,4')
+
+
+
+// function array(string) {
+//     const arr = string.split(',')
+//     if (arr.length<3){
+//         return null
+//     }
+//     arr.pop()
+//     arr.shift()
+//     return arr.join(' ')
+// }
+// array('1,2,3,4')
+//
+// function array(arr){
+//     return arr.split(",").slice(1,-1).join(" ") || null;
+// }
+
+
+
+
+// function printArray(array){
+//     return array.join(',')
+// }
+// console.log(printArray(["h","o","l","a"]))
+//
+//
+//
+// function removeEveryOther(arr){
+//     return arr.filter(function(element,index) {
+//         return index % 2 === 0;
+//     });
+// }
+// console.log(removeEveryOther(['Hello', 'Goodbye', 'Hello Again']))
+
+
+
+// function points(games) {
+//     let newArr = games.map(item => item.replace(':', ''))
+//     let dijitArr = newArr.join('').split('')
+//     let filteredDigitsStr = dijitArr.filter((digit, index) => {
+//         return index % 2 === 0;
+//     });
+//     let numbersArr = games.map(item => parseInt(item));
+//     let total = numbersArr.reduce((accumulator, currentValue) => {
+//         return accumulator + currentValue;
+//     }, 0);
+//     return total
+// }
+
+
+
+// function findAverage(array) {
+//     if (array.length === 0) {
+//         return 0;
+//     }
+//     return array.reduce((accumulator, currentValue) => accumulator + currentValue, 0)/ array.length;
+// }
+//
+// console.log(findAverage([1,2,3,4]))
+//
+//
+//
+// function stringToArray(string){
+//     return string.split(' ')
+// }
+//
+// function points(games) {
+//     let score = 0
+//     let numbersArr = games.map(item => item.replace(':', '')).join('').split('')
+//     for (let i = 0;i<numbersArr.length;i+=2){
+//         if (numbersArr[i]>numbersArr[i+1]){
+//             score+=3
+//         }else if(numbersArr[i]===numbersArr[i+1]){
+//             score++
+//         }
+//     }
+//     return score
+// }
+//
+// console.log(points(["0:1","0:2","0:3","0:4","1:2","1:3","1:4","2:3","2:4","3:4"]))
+
+
+// let arr = ['1', '2', '3', '4', '5', '6', '7', '8']
+// for (let i = 0;i<arr.length;i+=2){
+//     console.log(arr[i])
+// }
+
+
+
+// function multipleOfIndex(array) {
+//     return array.filter((element,index)=> {
+//         if (element===0&&index===0) {
+//             return true
+//         }return element%index===0
+//     })
+// }
+//
+// console.log(multipleOfIndex([0, 2, 3, 6, 9]))
+//
+// function digitize(n) {
+//     return n.toString().split('').reverse().map(item=>Number(item))
+// }
+//
+// function getAverage(marks){
+//     return Math.floor(marks.reduce((acc,element)=>acc+=element,0)/marks.length)
+// }
+// getAverage([1,1,1,1,1,1,1,2])
+//
+//
+// function grow(x){
+//     return x.reduce((acc,item)=>acc*=item,1)
+// }
+//
+//
+// function invert(array) {
+//     return array.map(item=>item*-1)
+// }
+//
+// function fixTheMeerkat(arr) {
+//     return arr.reverse()
+// }
+//
+// function gooseFilter (birds) {
+//     const geese = ["African", "Roman Tufted", "Toulouse", "Pilgrim", "Steinbacher"];
+//     return birds.filter(bird=>!geese.includes(bird))
+// }
+
+// function flip(d,a){
+//     return [...a].sort((a,b)=>d==='R'?a-b:b-a)
+// }
+
+
+
+// let arr = ['a', 'e', 'i', 'o', 'u']
+// for (let i=0;i<arr.length;i++){
+//     console.log(arr[i].charCodeAt(0))
+// }
+
+// function isVow(a){
+//     let arr = ['a', 'e', 'i', 'o', 'u']
+//     return a.map(item=>{
+//         const letter = String.fromCharCode(item)
+//         console.log(arr.includes(letter))
+//         return arr.includes(String.fromCharCode(item))?String.fromCharCode(item):item})
+// }
+// isVow([101,121,110,113,113,103,121,121,101,107,103])
+//
+//
+// function monkeyCount(n) {
+//     let arr = []
+//     for (let i = 1;i<=n;i++){
+//         arr.push(i)
+//     }
+//     return arr
+// }
+//
+//
+// function check(a, x) {
+//     return a.includes(x)
+// }
+//класи функції конструктори
+
+
+
+// function maps(x){
+//     return x.map(element=>element*2)
+// }
+// console.log(maps([4, 1, 1, 1, 4]))
+//
+//
+// function check(a,x){
+//     return a.includes(x)
+// }
+
+
+
+function sum (numbers) {
+        return numbers.reduce((acc,number)=>acc+=number)
 }
-
-// console.log(isDigit('-234.4f'))
-
-console.log(NaN===NaN)
+console.log(sum([4, 1, 1, 1, 4]))
