@@ -1097,6 +1097,9 @@
 // function check(a, x) {
 //     return a.includes(x)
 // }
+
+
+
 //класи функції конструктори
 
 
@@ -1113,7 +1116,513 @@
 
 
 
-function sum (numbers) {
-        return numbers.reduce((acc,number)=>acc+=number)
+// function sum (numbers) {
+//         return numbers.reduce((acc,number)=>acc+=number)
+// }
+// console.log(sum([4, 1, 1, 1, 4]))
+
+
+// function countBy(x, n) {
+//         let q = [];
+//         for (let i=x;i<=n*x;i++){
+//                 if (i%x===0){
+//                         q.push(i)
+//                 }
+//         }
+//         return q;
+// }
+// console.log(countBy(2,5))
+
+
+// function sumMix(x){
+//         return x.reduce((acc,number)=>acc+=Number(number),0)
+// }
+// console.log(sumMix(['3', 6, 6, 0, '5', 8, 5, '6', 2,'0']))
+//
+//
+// function mergeArrays(arr1, arr2) {
+//         let arr3 = []
+//         arr3.push(...arr1,...arr2)
+//         return arr3.sort((a,b)=>a-b).filter((item, index) => arr3.indexOf(item) === index)
+// }
+// console.log(mergeArrays([1,3,5,7,9,11,12], [1,2,3,4,5,10,12]))
+
+
+// class Person {
+//         constructor(name, age) {
+//                 console.log(name)
+//                 console.log(age)
+//                 this.name = name;
+//                 this.age = age;
+//         }
+//
+//         greet() {
+//                 console.log(this)
+//                 console.log(`Hello, my name is ${this.name} and I'm ${this.age} years old.`);
+//         }
+// }
+
+// Створення нового екземпляру класу Person
+// const person1 = new Person('Alice', 25);
+// const person2 = new Person('Bob', 30);
+
+// person1.showMessage=function () {
+//         console.log(this===person1)
+// }
+// person1.showMessage()
+// console.log(person1)
+// const showMessage = person1.greet
+// showMessage()
+//this ыснуэ тыльки в середины функцый
+//на this впливаэ те де викликаэтсья функцыя а не де була вона оголошена
+// const ladder = {
+//         step: 0,
+//         up(){
+//                 this.step+=1
+//                 return this
+//         },
+//         down(){
+//                 this.step-=1
+//                 return this
+//         }
+// }
+// ladder.down().up().up()
+// console.log(ladder.step)
+
+/*
+? Напишіть метод calcTotalPrice(stoneName), який приймає назву каменю, розраховує
+? та повертає загальну вартість каменів з таким ім'ям, ціною та кількістю з властивості stones.
+*/
+
+// const chopShop = {
+//   stones: [
+//     { name: 'Emerald', price: 1300, quantity: 4 },
+//     { name: 'Diamond', price: 2700, quantity: 3 },
+//     { name: 'Sapphire', price: 1400, quantity: 7 },
+//     { name: 'Ruby', price: 800, quantity: 2 },
+//   ],
+//         calcTotalPrice (stoneName){
+//           for (let i = 0;i<this.stones.length;i++){
+//                   if (this.stones[i].name===stoneName){
+//                           return this.stones[i].price*this.stones[i].quantity
+//                   }
+//           }
+//         }
+// };
+//
+// console.log(chopShop.calcTotalPrice('Emerald')); // 5200
+// console.log(chopShop.calcTotalPrice('Diamond')); // 8100
+// console.log(chopShop.calcTotalPrice('Sapphire')); // 9800
+// console.log(chopShop.calcTotalPrice('Ruby')); // 1600
+//
+
+/*
+? Створіть об'єкт calculator із трьома методами:
+?
+? read(a, b)- приймає два значення та зберігає їх як властивості об'єкта.
+? add() - повертає суму збережених значень.
+? mult() - перемножує збережені значення та повертає результат.
+*/
+
+
+// const calculator = {
+//         read(a, b){
+//                 this.a=a
+//                 this.b=b
+//         },
+//         add(){
+//                 return this.a+this.b
+//         },
+//         mult() {
+//                 return this.a*this.b
+//         },
+// }
+// calculator.read(2,3)
+// console.log(calculator.add())
+// console.log(calculator.mult())
+// console.log(calculator)
+
+
+/*
+ * Працюємо з колекцією товарів у кошику:
+ * - getItems()
+ * - add(product)
+ * - remove(productName)
+ * - clear()
+ * - countTotalPrice()
+ * - increaseQuantity(productName)
+ * - decreaseQuantity(productName)
+ *
+ * { name: '🍎', price: 50 }
+ * { name: '🍇', price: 70 }
+ * { name: '🍋', price: 60 }
+ * { name: '🍓', price: 110 }
+ */
+
+// const cart = {
+//         items : [],
+//
+//         getItems(){
+//                 return this.items
+//         },
+//         add(product){
+//                 this.items.push({...product,quantity:1})
+//         },
+//         remove(productName){
+//                 this.items=this.items.filter(item=>item.name !== productName)
+//         },
+//         clear(){
+//                 this.items = []
+//         },
+//         countTotalPrice(){
+//                 return this.items.reduce((acc,item)=>acc+=item.price,0)
+//         },
+//         increaseQuantity(productName){
+//                 this.items=this.items.map(item=>{
+//                         if (item.name===productName){
+//                                 item.quantity+=1
+//                         }
+//                         return item
+//                 })
+//         },
+//         decreaseQuantity(productName){
+//                 this.items=this.items.map(item=>{
+//                         if (item.name===productName){
+//                                 item.quantity-=1
+//                         }
+//                         return item
+//                 })
+//         }
+// }
+// cart.add({ name: '🍎', price: 50 })
+// cart.add({ name: '🍇', price: 70 })
+// cart.add({ name: '🍋', price: 60 })
+// cart.add({ name: '🍓', price: 110 })
+// cart.increaseQuantity('🍎')
+// console.log(cart.countTotalPrice())
+// console.table(cart.getItems())
+
+
+
+// function well(x){
+//         let good = x.filter(item=>item ==='good').reduce((accumulator, currentValue) => accumulator+=1,0)
+//         if (good>2){
+//                 return 'I smell a series!'
+//         } else if (good<=2&&good>0){
+//                 return 'Publish!'
+//         }else return 'Fail!'
+// }
+//
+// console.log(well(['bad', 'bad', 'bad']))
+//
+// const well = x => {
+//         const good_count = x.filter(x => x == 'good').length;
+//         return good_count < 1 ? 'Fail!' :
+//             good_count < 3 ? 'Publish!' : 'I smell a series!';
+// }
+
+
+
+
+// function all(arr, fun) {
+//         for (let i = 0; i < arr.length; i++) {
+//                 if (fun(arr[i])===false) {
+//                         return false;
+//                 }
+//         }
+//         return true;
+// }
+
+
+
+
+// function all( arr, fun ){
+//         return arr.every(fun)
+// }
+
+
+
+// function all(arr, fun) {
+//         for (let i = 0; i < arr.length; i++) {
+//                 if (arr[i]<9){
+//                         return true
+//                 }else if (arr[i]>9){
+//                         return false
+//                 }
+//         }
+// }
+// console.log(all([1,2,3,4,5],9))
+
+// function first(arr, n) {
+//         // return arr.slice(0,n)
+//         let total = []
+//         if (n===0)return []
+//         for (let i=0;i<n;i++){
+//                 if (arr[i]===undefined){
+//                         continue
+//                 }
+//                 total.push(arr[i])
+//         }
+//         return total
+// }
+//
+// console.log(first(['a', 'b', 'c', 'd', 'e'], 10))
+
+
+// const numbers = [1,2,3,4,5,6]
+//
+// const qwe = numbers.filter((num,index)=>index%2 !==0)
+//
+// console.log(qwe)
+
+
+// function howMuchILoveYou(nbPetals) {
+//         const phrases = ["not at all","I love you","a little","a lot","passionately","madly","not at all"]
+//        const index = nbPetals%6
+//         console.log(index)
+// }
+// howMuchILoveYou(3)
+
+
+// class Warrior {
+//     #hp
+//     constructor({skill,name,damage,hp}) {
+//         this.skill = skill
+//         this.name = name
+//         this.damage = damage
+//         this.#hp = hp
+//     }
+//     punch(){
+//         console.log('damage:',this.damage)
+//     }
+//     getHp(){
+//         console.log('hp',this.#hp)
+//     }
+// }
+// const riki = new Warrior({name:'riki', skill:'poof', damage:'50', hp:'450'})
+// console.log(riki)
+// riki.getHp()
+// riki.punch()
+// const juggernaut = new Warrior({name:'juggernaut', skill:'omnislash', damage:'60', hp:'500'})
+// console.log(juggernaut)
+// juggernaut.punch()
+// const vod = new Warrior({name:'void',skill:'chronosphere',damage:'70',hp:'600'})
+// console.log(vod)
+// //весь 9 роздыл ы 7.2
+//
+//
+//
+// function warnTheSheep(queue) {
+//     const index = queue.indexOf('wolf')
+//     if (queue.length-1===index){
+//         return "Pls go away and stop eating my sheep"
+//     }else return `Oi! Sheep number ${queue.length-1-index}! You are about to be eaten by a wolf!`
+// }
+
+
+// class Animal{
+//     constructor(name) {
+//         this.name = name
+//         this.speed=0
+//     }
+//     run(speed){
+//         this.speed = speed
+//         console.log(`${this.name} runs with speed ${this.speed}`)
+//     }
+//     stop(){
+//         this.speed = 0
+//         console.log('we stoped animal')
+//     }
+// }
+// class Rabbit extends Animal{
+//     constructor(name,age) {
+//         super(name)
+//         this.age = age
+//     }
+//     hide(){
+//         console.log('hidden')
+//     }
+//     stop(){
+//         super.stop()
+//         this.hide()
+//     }
+// }
+// const rabbit = new Rabbit('Rabbit',2)
+// rabbit.stop()
+// console.log(rabbit)
+
+
+
+// class CoffeeMachine{
+//     #waterAmount = 0;
+//      static Max = 100
+//     static GetNumberCoffeeMachine() {
+//          return Math.random()
+//     }
+//     constructor(power) {
+//         this.power = power;
+//     }
+//     set addWatter(value){
+//         this.#waterAmount += value;
+//     }
+//     get waterAmount(){
+//         return this.#waterAmount;
+//     }
+//     get max(){
+//          console.log(CoffeeMachine.Max)
+//     }
+//     createCoffee(){
+//         if (this.#waterAmount >=200){
+//             this.#waterAmount -=200
+//             console.log('we created cup of coffee')
+//         }else {
+//             console.log('sorry but watter in coffee machine is out')
+//         }
+//     }
+// }
+// const coffeeMachine = new CoffeeMachine(100)
+// coffeeMachine.max
+// console.log(CoffeeMachine.GetNumberCoffeeMachine())
+// console.log(coffeeMachine.__proto__)
+// console.log(CoffeeMachine.prototype===coffeeMachine.__proto__)
+// console.log(coffeeMachine.waterAmount)
+// console.log(coffeeMachine.waterAmount);
+// coffeeMachine.addWatter=1000
+// coffeeMachine.createCoffee()
+// coffeeMachine.createCoffee()
+// coffeeMachine.createCoffee()
+// coffeeMachine.createCoffee()
+// coffeeMachine.createCoffee()
+// coffeeMachine.createCoffee()
+
+//властивості класу доступні на екземплярах класу
+//методи класу доступні на екземплярах класу
+//приватні властивості доступні лише в середині класу
+//приватні методи доступні лише в середині класу
+//статичні властивості доступні лише на самому класі
+//статичні методи доступні лише на самому класі
+
+// const user = {
+//     name: 'mango'
+// }
+// user.age = 21
+// user.getName = function () {
+//     return this.name
+// }
+// console.log(user.getName())
+//
+// const numbers = [1, 2, 3, 4, 5]
+// Array.prototype.square = function (){
+//     return this.map(element=>Math.pow(element,2))
+// }
+// Array.prototype.cube = function (){
+//     return this.map(element=>Math.pow(element,3))
+// }
+// Array.prototype.average = function (){
+//     return this.reduce((acc,element)=> acc+element,0)/this.length
+// }
+// Array.prototype.sum = function (){
+//     return this.reduce((acc,element)=> acc+element,0)
+// }
+// Array.prototype.even = function (){
+//     return this.filter(number=>number%2===0)
+// }
+// Array.prototype.odd = function (){
+//     return this.filter(number=>number%2!==0)
+// }
+// console.log(numbers.square())
+
+// function isEven(n) {
+//     return n % 2 === 0;
+// }
+//
+// function isOdd(n) {
+//     return n % 2 === 1;
+// }
+// function deleteValues(array, pred) {
+//     for(let i = array.length-1; i >=0; i--) {
+//         if ( pred(array[i]) ) {
+//             array.splice(i, 1);
+//         }
+//     }
+//     return array;
+// }
+// console.log(deleteValues([1,3,2,4,5,7,6,8,10,9],isEven))
+
+
+// function largest(n, array) {
+//     return array.sort((a, b) => a-b).slice(-n)
+// }
+//
+// console.log(largest(2, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]))
+//
+//
+//
+// function removeSmallest(numbers) {
+//     // return numbers.sort((a,b)=>a-b).filter((item, index) => numbers.indexOf(item) === index).slice(1)
+//     const minIndex = numbers.indexOf(Math.min(...numbers));
+//     const result = numbers.slice(0, minIndex).concat(numbers.slice(minIndex + 1));
+//     return result
+// }
+// console.log(removeSmallest([5, 3, 2, 1, 4]))
+
+// function distancesFromAverage(arr){
+//     let avg = arr.reduce((acc,item)=>acc+item,0)/arr.length
+//     return arr.map(item=>parseFloat((avg-item).toFixed(2)))
+// }
+// console.log(distancesFromAverage([1, -1, 1, -1, 1, -1]))
+
+
+
+// function removeSmallest(numbers) {
+//     const minIndex = numbers.indexOf(Math.min(...numbers));
+//     const result = numbers.slice(0, minIndex)
+//         result.push(...numbers.slice(minIndex + 1));
+//     return result
+// }
+// console.log(removeSmallest([1, 2, 3, 4, 5]))
+
+
+// function sortByLength (array) {
+//     return array.sort((a,b)=>a.length-b.length);
+// }
+
+
+// function convertHashToArray(hash){
+//     console.log(Object.entries(hash))
+//     return Object.entries(hash).sort((a,b)=>a[0].localeCompare(b[0]))
+// }
+// console.log(convertHashToArray({name: "Jeremy", age: 24}))
+
+// function every(arr, interval=1, start=0){
+//     const array = []
+//     for (let i = start;i<arr.length;i+=interval){
+//             array.push(arr[i])
+//     }
+//     return array
+// }
+//
+// console.log(every([0,1,2,3,4],3))
+
+// let arr = ['mango','banana','apple',10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+// for (let i = 0;i<arr.length;i++){
+//     if (i%3===0){
+//         console.log(arr[i])
+//     }
+// }
+
+function compoundArray(a, b) {
+    const newArr = []
+    const arrLenght = a.length>b.length?a.length:b.length
+    for (let i =0;i<arrLenght;i++){
+        if (a[i]!==undefined){
+            newArr.push(a[i])
+        }
+        if (b[i]!==undefined){
+            newArr.push(b[i])
+        }
+    }
+    return newArr
+    // return newArr.filter(item=>item!==undefined)
 }
-console.log(sum([4, 1, 1, 1, 4]))
+console.log(compoundArray([11, 12], [21, 22, 23, 24]))
