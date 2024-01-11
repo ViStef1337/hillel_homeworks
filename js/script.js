@@ -426,8 +426,212 @@
 
 
 
-const bodyElement = document.body
+// const bodyElement = document.body
+//
+// const firstChild = bodyElement.firstElementChild
+// const lastChild = bodyElement.lastElementChild
+// const parentElement = bodyElement.parentElement
 
-const firstChild = bodyElement.firstElementChild
-const lastChild = bodyElement.lastElementChild
-const parentElement = bodyElement.parentElement
+
+// function clean(arr) {
+//     return arr.filter(item=>true)
+// }
+//
+// console.log(clean([1, 2, [],, 3]))
+
+
+// function teamComp(heroes) {
+//     let countDamage = 0
+//     let countSupport = 0
+//     let countTank = 0
+//     for (let i=0;i<heroes.length;i++){
+//         if (TANK.includes(heroes[i])){
+//             countTank++
+//         }
+//         if (SUPPORT.includes(heroes[i])){
+//             countSupport++
+//         }
+//         if (DAMAGE.includes(heroes[i])){
+//             countDamage++
+//         }
+//     }
+//     const unicHeroes = heroes.filter((item,index,arr)=>index!==arr.indexOf(item))
+//     if(heroes.length!==6||unicHeroes.length>0){
+//         throw "GG"
+//     }
+//     return [countTank,countDamage,countSupport]
+// }
+// console.log(teamComp(heroes))
+
+
+
+// function alphaSeq (str) {
+//     const splited = str.toLowerCase().split('').sort()
+//     const arr = []
+//     for (let i = 0;i<splited.length;i++){
+//         const letter = splited[i]
+//         const numberOfRepeat = letter.charCodeAt(0)-97
+//         arr.push(letter.toUpperCase()+letter.repeat(numberOfRepeat))
+//     }
+//     return arr.join(',')
+// }
+//
+//
+// function firstTooth(t) {
+//     const diff = t.map((elem,index,arr)=>(elem-arr[index-1]||0)+(elem-arr[index+1]||0))
+//     const max = Math.max(...diff)
+//     const notTooth = diff.filter(item=>item===max).length
+//     if (notTooth)return -1
+//     return diff.indexOf(max)
+// }
+// console.log(firstTooth([1, 2, 3, 4]))
+
+
+
+//.body .firstChild .lastChild .childNodes .previousSibling .nextSibling .parentNode .children .firstElementChild .lastElementChild .previousElementSibling .nextElementSibling .parentElement
+// пошук по селектору класа .querySelectorAll('.lesson__list')
+// пошук по селектору тега .querySelectorAll('li')
+// пошук по селектору тега i класа .querySelectorAll('li.lesson__item-list')
+// пошук по тегу першого рывня вложеносты .querySelectorAll('.lesson__list>li')
+// пошук по декыльком класам .querySelectorAll('.lesson__list, .lesson__text')
+// пошук по вкладеним класам .querySelectorAll('.lesson__list .lesson__text')
+// пошук по id .querySelectorAll('#listItem')
+// пошук по атрибуту .querySelectorAll('[data-item]')
+// пошук по атрибуту зы значенням (.querySelectorAll('[data-item='85']')
+// пошук по id document.getElementByTagName ('li')
+// пошук по id document.getElementByClassName ('li')
+
+
+
+
+// const bodyElement = document.body
+//
+// const previousSiblingNode = bodyElement.previousSibling
+// const nextSiblingNode = bodyElement.nextSibling
+// const parentNode = bodyElement.parentNode
+
+
+
+// const bodyElement = document.body
+//
+// const firstChild = bodyElement.firstElementChild
+// const lastChild = bodyElement.lastElementChild
+// const parentElement = bodyElement.parentElement
+
+
+
+// const textElement = document.querySelector('.lesson__list')
+// const newElement = document.createElement('div')
+// newElement.innerHTML = 'Живи а работай в <span class="yellow">свободное </span>время!'
+// textElement.append(newElement)
+
+//.insertAdjacentHTML(
+// "afterend"
+//`шось`
+// )
+
+//.cloneNode(true) клонуэ
+
+
+//.remove() видаляе вузол
+
+
+// element.classList.add('active') добавляэ клас
+// element.classList.remove('active')
+// element.classList.toggle('active') домавити клас якшо його нема а якшо э то видалити
+// element.classList.contains('active')провырка чи э клас тру або фолс
+
+
+//element.style.color='red'
+
+
+// щоб анулювати стайл треба присвоъти йому пусту строчку
+
+
+//element.style.cssText = `
+//margin-bottom: 30px;
+//color:red;
+//`
+
+//const input = document.querySelector('.lesson__input')
+//input.setAttribute('id', '123')
+
+
+// const table = document.querySelector('.calendar')
+// function handleClick(event){
+//     if (event.target.nodeName==='TH'||event.target.textContent==='')return
+//     const isActive = document.querySelector('.active')
+//     if (isActive===event.target){
+//         return isActive.classList.remove('active')
+//     }
+//     if (isActive){
+//         isActive.classList.remove('active')
+//     }
+//     console.log(isActive)
+//     event.target.classList.add('active')
+// }
+// table.addEventListener('click',handleClick)
+
+// function pooRoulette(p) {
+//
+//     for (let i = 0;i<p.length;i++){
+//         const arr = p[i]
+//         const index = arr.indexOf('B')
+//         if (arr.includes('B')){
+//             if(arr[index+1]==='~'&&arr[index+2]==='~'&&arr[index+3]==='~'){
+//                 return "You disgust me!"
+//             }
+//             if(arr[index-1]==='~'&&arr[index-2]==='~'&&arr[index-3]==='~'){
+//                 return "You disgust me!"
+//             }
+//             if (i>=3){
+//                 if (p[i-1][index]==='~'&&p[i-2][index]==='~'&&p[i-3][index]==='~'){
+//                     return "Get the wipes!"
+//                 }
+//             }
+//         }
+//     }
+//     return "Calm before the storm"
+// }
+// pooRoulette([
+//     [ 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+//     [ 'o', 'o', '~', 'o', 'o', 'o', 'o'],
+//     [ 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+//     [ 'o', 'o', '~', 'o', 'o', 'o', 'o'],
+//     [ 'o', 'o', '~', 'o', 'o', 'o', 'o'],
+//     [ 'o', 'o', 'B', 'o', '~', '~', '~'],
+//     [ 'o', 'o', 'o', 'o', 'o', 'o', 'o']
+// ])
+
+// function cupAndBalls(b, arr){
+//     return arr.reduce((acc,value)=>{
+//         if (acc===value[1]){
+//             return value[0]
+//         }
+//         if (acc===value[0]){
+//             return value[1]
+//         }
+//         return acc
+//     },b)
+// }
+
+function chooseShows(showList) {
+    if (showList.length===0) return [['No shows to see!'], 0]
+    const sortedArr = [...showList].sort((a,b)=>a.time-b.time||a.price-b.price)
+    let totalPrice = 0
+    let timeStart = 5
+    let totalShows = []
+    for (let i = 0;i<sortedArr.length;i++){
+        if (sortedArr[i].time>=timeStart){
+            timeStart=0.5+sortedArr[i].length+sortedArr[i].time
+            totalPrice+=sortedArr[i].price
+            totalShows.push(sortedArr[i].name)
+        }
+    }
+    return [totalShows,totalPrice]
+}
+chooseShows([ { name: 'Little Death Club', time: 8, length: 2, price: 10 },
+    { name: 'Reversible', time: 7, length: 1, price: 20 },
+    { name: 'Courtney Act', time: 6, length: 0.5, price: 10 },
+    { name: 'Attrape-Moi', time: 7, length: 1, price: 15 },
+    { name: 'Myra Dubois', time: 7, length: 1, price: 12 } ])
