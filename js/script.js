@@ -615,23 +615,264 @@
 //     },b)
 // }
 
-function chooseShows(showList) {
-    if (showList.length===0) return [['No shows to see!'], 0]
-    const sortedArr = [...showList].sort((a,b)=>a.time-b.time||a.price-b.price)
-    let totalPrice = 0
-    let timeStart = 5
-    let totalShows = []
-    for (let i = 0;i<sortedArr.length;i++){
-        if (sortedArr[i].time>=timeStart){
-            timeStart=0.5+sortedArr[i].length+sortedArr[i].time
-            totalPrice+=sortedArr[i].price
-            totalShows.push(sortedArr[i].name)
+// function chooseShows(showList) {
+//     if (showList.length===0) return [['No shows to see!'], 0]
+//     const sortedArr = [...showList].sort((a,b)=>a.time-b.time||a.price-b.price)
+//     let totalPrice = 0
+//     let timeStart = 5
+//     let totalShows = []
+//     for (let i = 0;i<sortedArr.length;i++){
+//         if (sortedArr[i].time>=timeStart){
+//             timeStart=0.5+sortedArr[i].length+sortedArr[i].time
+//             totalPrice+=sortedArr[i].price
+//             totalShows.push(sortedArr[i].name)
+//         }
+//     }
+//     return [totalShows,totalPrice]
+// }
+// chooseShows([ { name: 'Little Death Club', time: 8, length: 2, price: 10 },
+//     { name: 'Reversible', time: 7, length: 1, price: 20 },
+//     { name: 'Courtney Act', time: 6, length: 0.5, price: 10 },
+//     { name: 'Attrape-Moi', time: 7, length: 1, price: 15 },
+//     { name: 'Myra Dubois', time: 7, length: 1, price: 12 } ])
+
+
+// button.onclick = function () {
+//     console.log('Клик!');
+// }
+//
+// button.addEventListener("mousedown", function (event) {
+//     console.log(`Нажата кнопка ${event.which}`);
+// });
+//
+//
+// blockForMouse.addEventListener("mouseover", function (event) {
+//     blockForMouse.innerHTML = `Курсор над элементом`;
+// });
+//
+// blockForMouse.addEventListener("mouseout", function (event) {
+//     blockForMouse.innerHTML = `Курсор уходит с элемента`;
+// });
+//
+// blockForMouse.addEventListener("mouseenter", function (event) {
+//     console.log(`Курсор над элементом`);
+// });
+//
+// blockForMouse.addEventListener("mouseleave", function (event) {
+//     console.log(`Курсор уходит с элемента`);
+// });
+//
+// document.addEventListener("keydown", function (event) {
+//     console.log(`Нажата клавиша ${event.code} (${event.key})`);
+// });
+//
+//
+// document.addEventListener("keyup", function (event) {
+//     console.log(`Отжата клавиша ${event.code} (${event.key})`);
+// });
+
+
+// class Calculator {
+//     #currentOperand = ''
+//     #previousOperand = ''
+//     #operation = ''
+//     constructor(previousOperandElement,currentOperandElement) {
+//         this.previousOperandElement=previousOperandElement
+//         this.currentOperandElement=currentOperandElement
+//     }
+//     appendNumber(number){
+//         this.#currentOperand=this.#currentOperand+number
+//         this.updateDisplay()
+//     }
+//     updateDisplay(){
+//         this.currentOperandElement.textContent=this.#currentOperand
+//         this.previousOperandElement.textContent=this.#previousOperand
+//     }
+//     chooseOperation(operation){
+//         if (this.#currentOperand==='') return;
+//         this.#operation=operation
+//         this.#previousOperand=this.#currentOperand
+//         this.#currentOperand = ''
+//         this.updateDisplay()
+//     }
+// }
+//
+// const previousOperandElement = document.querySelector('.previous__operand')
+// const currentOperandElement = document.querySelector('.current__operand')
+//
+// const calculator = new Calculator(previousOperandElement,currentOperandElement)
+//
+// const numbers = document.querySelectorAll('[data-number]')
+// const operations = document.querySelectorAll('[data-operation]')
+// numbers.forEach(button=>{
+//     button.addEventListener('click',()=>{calculator.appendNumber(button.textContent)})
+// })
+// operations.forEach(button=>{
+//     button.addEventListener('click',()=>{calculator.chooseOperation(button.textContent)})
+// })
+
+
+
+
+
+
+
+
+
+// function scoreboard (array) {
+//     const numbers = {
+//         'one': 1,
+//         'two': 2,
+//         'three': 3,
+//         'four': 4,
+//         'five': 5,
+//         'six': 6,
+//         'seven': 7,
+//         'eight': 8,
+//         'nine': 9,
+//         'nil': 0
+//     }
+//     const splitArray = array.split(' ')
+//     const arraysOfArrays = Object.entries(numbers)
+//     let boo = []
+//     for (let i = 0;i<splitArray.length;i++){
+//         const key = splitArray[i]
+//         if (numbers[key]>=0){
+//             boo.push(numbers[key])
+//         }
+//     }
+//     return boo
+// };
+// console.log(scoreboard("two two"))
+
+// function convertScore(spokenScore) {
+//     const wordsToNumbers = {
+//         'zero': 0,
+//         'one': 1,
+//         'two': 2,
+//         'three': 3,
+//         'four': 4,
+//         'five': 5,
+//         'six': 6,
+//         'seven': 7,
+//         'eight': 8,
+//         'nine': 9
+//     };
+//
+//     const words = spokenScore.split(' ');
+//     const scores = [];
+//
+//     for (const word of words) {
+//         const number = wordsToNumbers[word.toLowerCase()];
+//         if (!isNaN(number)) {
+//             scores.push(number);
+//         }
+//
+//     }
+//     return scores;
+// }
+// console.log(convertScore("The score is four nil"))
+
+
+
+
+// function thirstyRobot(drinks) {
+//     let wine = false;
+//     let beer = false;
+//     let vodka = false;
+//
+//     for (const alcohol of drinks) {
+//         if (alcohol <= 8&&wine) {
+//             beer = true;
+//         }
+//         if (alcohol > 15) {
+//             vodka = true;
+//         }
+//         if (alcohol>8&&alcohol<=15){
+//             wine = true;
+//         }
+//     }
+//     if (!beer && !vodka){
+//         return 'Fine'
+//     }
+//         if (beer && !vodka) {
+//             return "Oh dear";
+//         }
+//         if (beer && vodka) {
+//             return "Poor robot";
+//         }
+//
+//
+//     if (!beer && vodka) {
+//         return "Wonky robot";
+//     }
+//
+// }
+
+
+
+// function whosOnline(friends){
+//     const result = {
+//
+//     }
+//     for (const {username,status,lastActivity} of friends){
+//         if (status==='online'&&lastActivity<=10){
+//             if (!result.online){
+//                 result['online'] = [];
+//             }
+//             result.online.push(username)
+//
+//         }else if (status==='offline'){
+//             if (!result.offline){
+//                 result['offline'] = []
+//             }
+//             result.offline.push(username)
+//
+//         }else {
+//             if (!result.away){
+//                 result['away']=[]
+//             }
+//             result.away.push(username)
+//         }
+//     }
+//     return result
+// }
+// whosOnline([{
+//     username: 'David',
+//     status: 'online',
+//     lastActivity: 10
+// }, {
+//     username: 'Lucy',
+//     status: 'offline',
+//     lastActivity: 22
+// }, {
+//     username: 'Bob',
+//     status: 'online',
+//     lastActivity: 104
+// }])
+
+
+
+function distributeEvenly(array){
+    const emptyArr = []
+
+    const obj = array.reduce((acc,item)=>{
+        if (acc[item]){
+            acc[item]+=1
+        }else {
+            acc[item]=1
+        }
+        return acc
+    },{})
+
+    while (emptyArr.length<array.length){
+        for (const key of Object.keys(obj)){
+            if (obj[key]){
+                emptyArr.push(key)
+                obj[key]--
+            }
         }
     }
-    return [totalShows,totalPrice]
+    return emptyArr
 }
-chooseShows([ { name: 'Little Death Club', time: 8, length: 2, price: 10 },
-    { name: 'Reversible', time: 7, length: 1, price: 20 },
-    { name: 'Courtney Act', time: 6, length: 0.5, price: 10 },
-    { name: 'Attrape-Moi', time: 7, length: 1, price: 15 },
-    { name: 'Myra Dubois', time: 7, length: 1, price: 12 } ])
+distributeEvenly(['one', 'one', 'two', 'two', 'three', 'three', 'four', 'one'])

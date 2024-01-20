@@ -1,18 +1,74 @@
-.calendar{
-    font-size: 20px;
-    margin:0 auto;
-    border-collapse: collapse;
+/*.calendar{*/
+/*    font-size: 20px;*/
+/*    margin:0 auto;*/
+/*    border-collapse: collapse;*/
+/*}*/
+/*.calendar th, .calendar td {*/
+/*    border: 1px solid #000000;*/
+/*    padding: 10px;*/
+/*    text-align: center;*/
+/*}*/
+/*.calendar td{*/
+/*    cursor: pointer;*/
+/*    transition: all 250ms linear;*/
+/*}*/
+/*.active,.calendar td:hover{*/
+/*    background-color: #12d27c;*/
+/*    color: #7a9a23;*/
+/*}*/
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: Gothman Rounded, sans-serif;
+    font-weight: normal;
 }
-.calendar th, .calendar td {
-    border: 1px solid #000000;
-    padding: 10px;
-    text-align: center;
+
+body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00aaff, #00ff6c);
 }
-.calendar td{
+
+.calculator__grid{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4,100px);
+    grid-template-rows: minmax(120px,auto) repeat(5,100px)
+}
+.calculator__grid>button{
     cursor: pointer;
-    transition: all 250ms linear;
+    font-size: 2em;
+    border: 1px solid white;
+    outline: none;
+    background-color: rgb(255,255,255,0.75);
 }
-.active,.calendar td:hover{
-    background-color: #12d27c;
-    color: #7a9a23;
+.calculator__grid button:hover,.calculator__grid button:focus{
+    background-color: rgb(255,255,255,0.9);
+}
+.span__two{
+    grid-column: span 2;
+}
+.output{
+    grid-column: 1/-1;
+    background-color: rgb(0,0,0,0.75);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.previous__operand{
+    color: rgb(255,255,255,0.75);
+    font-size: 1.5rem;
+}
+.current__operand{
+    color:white;
+    font-size: 2.5rem;
 }
