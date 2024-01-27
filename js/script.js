@@ -853,26 +853,95 @@
 
 
 
-function distributeEvenly(array){
-    const emptyArr = []
+// function distributeEvenly(array){
+//     const emptyArr = []
+//
+//     const obj = array.reduce((acc,item)=>{
+//         if (acc[item]){
+//             acc[item]+=1
+//         }else {
+//             acc[item]=1
+//         }
+//         return acc
+//     },{})
+//
+//     while (emptyArr.length<array.length){
+//         for (const key of Object.keys(obj)){
+//             if (obj[key]){
+//                 emptyArr.push(key)
+//                 obj[key]--
+//             }
+//         }
+//     }
+//     return emptyArr
+// }
+// distributeEvenly(['one', 'one', 'two', 'two', 'three', 'three', 'four', 'one'])
 
-    const obj = array.reduce((acc,item)=>{
-        if (acc[item]){
-            acc[item]+=1
-        }else {
-            acc[item]=1
-        }
-        return acc
-    },{})
 
-    while (emptyArr.length<array.length){
-        for (const key of Object.keys(obj)){
-            if (obj[key]){
-                emptyArr.push(key)
-                obj[key]--
-            }
-        }
-    }
-    return emptyArr
-}
-distributeEvenly(['one', 'one', 'two', 'two', 'three', 'three', 'four', 'one'])
+// const buttons = document.querySelectorAll('.acardion-button')
+
+// buttons.forEach(button=>button.addEventListener('click',(e)=>{
+//     const panel = e.target.nextElementSibling
+//     panel.classList.toggle('active')
+// }))
+
+const menu = document.querySelector('.acardion-list')
+menu.addEventListener('click',(e)=>{
+    if (e.target.nodeName!=='BUTTON')return;
+    const panel = e.target.nextElementSibling
+    panel.classList.toggle('active')
+})
+
+// class Acardeon {
+//     constructor(selector) {
+//         this.menu = document.querySelector(selector)
+//         this.menu.addEventListener('click',this.onButtonClick)
+//     }
+//     onButtonClick(e){
+//         if (e.target.nodeName!=='BUTTON')return;
+//         const panel = e.target.nextElementSibling
+//         panel.classList.toggle('active')
+//     }
+// }
+// const acardion1 = new Acardeon('.acardion-list')
+// console.log(acardion1)
+
+
+
+// class Guesser {
+//     constructor(number, lives) {
+//         this.number = number;
+//         this.lives = lives;
+//     }
+//
+//     guess(n) {
+//         if (this.lives===0){
+//             throw new Error()
+//         }
+//         if (n===this.number){
+//             return true
+//         } else{
+//             this.lives --
+//             return false
+//         }
+//     }
+// }
+
+
+// function playerManager(players) {
+//     if (!players){
+//         return []
+//     }
+//     const arr = players.split(', ')
+//     let total = []
+//
+//     for (let i = 0;i<arr.length;i+=2){
+//         total.push({
+//             player: arr[i],
+//             contact: Number(arr[i+1])
+//         })
+//     }
+//     return total
+// }
+// console.log(playerManager(""))
+
