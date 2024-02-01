@@ -945,3 +945,13 @@ menu.addEventListener('click',(e)=>{
 // }
 // console.log(playerManager(""))
 
+function rowWeights(array){
+    return array.reduce((acc,value,index)=>{
+        if (index%2===0){
+                acc[0]+=value
+        }
+        else {
+                acc[1]+=value
+        }return acc},[0,0])
+}
+
