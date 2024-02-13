@@ -14,3 +14,27 @@
     pointer-events: none;
     visibility: hidden;
 }
+.parent{
+    height: 300px;
+    width: 300px;
+    background: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.child{
+    height: 250px;
+    width: 250px;
+    background: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.target{
+    height: 200px;
+    width: 200px;
+    background: red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
