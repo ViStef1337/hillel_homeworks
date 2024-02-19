@@ -72,9 +72,8 @@ const gallery = document.querySelector('.gallery')
 const marcap = galleryItems.map(({preview,description})=>
      `<li><img src="${preview}" alt="${description}"></li>>`
 ).join('')
-// gallery.insertBefore(marcap)
-const newElement = document.createElement(marcap)
-gallery.insertBefore(newElement)
+
+gallery.append(marcap)
 console.log(marcap)
 
 //вивчити що таке диструктиризація і що таке диструктиризація обєкта і масива і додати розмітку в дом
