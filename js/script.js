@@ -68,10 +68,10 @@ const galleryItems = [
 
 const gallery = document.querySelector('.gallery')
 const modal = document.querySelector('.modal')
+const img = modal.querySelector('img')
 
-
-const marcap = galleryItems.map(({preview, original, description}) =>
-    `<li class="gallery__item"><img class="gallery__image" src="${preview}" data-src="${original}" alt="${description}"></li>`
+const marcap = galleryItems.map(({preview, original, description},index) =>
+    `<li class="gallery__item"><img class="gallery__image" src="${preview}" data-src="${original}" data-index="${index}" alt="${description}"></li>`
 ).join('')
 gallery.insertAdjacentHTML('beforeend', marcap)
 
@@ -86,10 +86,18 @@ function closeModal() {
     modal.classList.add('is-hidden')
 }
 
-
+let currentImg = 0
 function keyClose(e){
     if (e.code==='Escape'){
         closeModal()
+    }
+    if (e.code==="ArrowLeft"){
+        currentImg-=1
+        img.src=galleryItems[currentImg].original
+    }
+    if (e.code==="ArrowRight"){
+        currentImg+=1
+        img.src=galleryItems[currentImg].original
     }
 }
 
@@ -98,7 +106,7 @@ gallery.addEventListener('click', (e) => {
         if (e.target.nodeName !== 'IMG') {
             return
         }
-        const img = modal.querySelector('img')
+        currentImg=Number(e.target.dataset.index)
         img.src = e.target.dataset.src
         openModal()
     }
