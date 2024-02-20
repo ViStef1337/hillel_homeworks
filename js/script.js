@@ -68,27 +68,45 @@ const galleryItems = [
 
 
 const gallery = document.querySelector('.gallery')
+const modal = document.querySelector('.modal')
+
+
 
 const marcap = galleryItems.map(({preview,description})=>
      `<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}"></li>`
 ).join('')
 gallery.insertAdjacentHTML('beforeend',marcap)
 
+
+
 function openModal(){
-    const modal = document.querySelector('.modal')
     modal.classList.remove('is-hidden')
 }
 
+
+
 function closeModal(){
-    const modal = document.querySelector('.modal')
     modal.classList.add('is-hidden')
 }
 
-gallery.addEventListener('click',()=>
-    openModal()
+
+gallery.addEventListener('click',(e)=> {
+        if (e.target.nodeName!=='IMG'){
+            return
+        }
+            openModal()
+    }
 )
 
-console.log(marcap)
+modal.addEventListener('click',(e)=>{
+    console.log(e.currentTarget)
+    if (e.target===e.currentTarget){
+        closeModal()
+
+    }
+})
+
+
 
 //вивчити що таке диструктиризація і що таке диструктиризація обєкта і масива і додати розмітку в дом
 
