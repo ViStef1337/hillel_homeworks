@@ -78,11 +78,19 @@ gallery.insertAdjacentHTML('beforeend', marcap)
 
 function openModal() {
     modal.classList.remove('is-hidden')
+    window.addEventListener('keydown',keyClose)
 }
 
 
 function closeModal() {
     modal.classList.add('is-hidden')
+}
+
+
+function keyClose(e){
+    if (e.code==='Escape'){
+        closeModal()
+    }
 }
 
 
