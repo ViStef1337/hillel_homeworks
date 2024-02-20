@@ -66,46 +66,41 @@ const galleryItems = [
 ]
 
 
-
 const gallery = document.querySelector('.gallery')
 const modal = document.querySelector('.modal')
 
 
-
-const marcap = galleryItems.map(({preview,description})=>
-     `<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}"></li>`
+const marcap = galleryItems.map(({preview, original, description}) =>
+    `<li class="gallery__item"><img class="gallery__image" src="${preview}" data-src="${original}" alt="${description}"></li>`
 ).join('')
-gallery.insertAdjacentHTML('beforeend',marcap)
+gallery.insertAdjacentHTML('beforeend', marcap)
 
 
-
-function openModal(){
+function openModal() {
     modal.classList.remove('is-hidden')
 }
 
 
-
-function closeModal(){
+function closeModal() {
     modal.classList.add('is-hidden')
 }
 
 
-gallery.addEventListener('click',(e)=> {
-        if (e.target.nodeName!=='IMG'){
+gallery.addEventListener('click', (e) => {
+        if (e.target.nodeName !== 'IMG') {
             return
         }
-            openModal()
+        const img = modal.querySelector('img')
+        img.src = e.target.dataset.src
+        openModal()
     }
 )
 
-modal.addEventListener('click',(e)=>{
-    console.log(e.currentTarget)
-    if (e.target===e.currentTarget){
+modal.addEventListener('click', (e) => {
+    if (e.target === e.currentTarget) {
         closeModal()
-
     }
 })
-
 
 
 //вивчити що таке диструктиризація і що таке диструктиризація обєкта і масива і додати розмітку в дом
