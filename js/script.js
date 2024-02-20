@@ -74,9 +74,19 @@ const marcap = galleryItems.map(({preview,description})=>
 ).join('')
 gallery.insertAdjacentHTML('beforeend',marcap)
 
-gallery.addEventListener('click',(e)=>{
+function openModal(){
+    const modal = document.querySelector('.modal')
+    modal.classList.remove('is-hidden')
+}
 
-})
+function closeModal(){
+    const modal = document.querySelector('.modal')
+    modal.classList.add('is-hidden')
+}
+
+gallery.addEventListener('click',()=>
+    openModal()
+)
 
 console.log(marcap)
 
