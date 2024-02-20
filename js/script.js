@@ -70,10 +70,17 @@ const galleryItems = [
 const gallery = document.querySelector('.gallery')
 
 const marcap = galleryItems.map(({preview,description})=>
-     `<li><img src="${preview}" alt="${description}"></li>>`
+     `<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}"></li>`
 ).join('')
+gallery.insertAdjacentHTML('beforeend',marcap)
 
-gallery.append(marcap)
+gallery.addEventListener('click',(e)=>{
+
+})
+
 console.log(marcap)
 
 //вивчити що таке диструктиризація і що таке диструктиризація обєкта і масива і додати розмітку в дом
+
+
+
