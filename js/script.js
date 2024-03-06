@@ -67,56 +67,123 @@ const galleryItems = [
 
 
 const gallery = document.querySelector('.gallery')
+
+const marcap = galleryItems.map(({preview, original,description},index)=>`<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}" data-src="${original}" ></li>`).join('')
 const modal = document.querySelector('.modal')
-const img = modal.querySelector('img')
+const img = document.querySelector('img')
+gallery.insertAdjacentHTML('beforeend',marcap)
 
-const marcap = galleryItems.map(({preview, original, description},index) =>
-    `<li class="gallery__item"><img class="gallery__image" src="${preview}" data-src="${original}" data-index="${index}" alt="${description}"></li>`
-).join('')
-gallery.insertAdjacentHTML('beforeend', marcap)
+gallery.addEventListener('click',(e)=>{
+    if (e.target===gallery){
+        return
+    }
+    img.src=e.target.dataset.src
+    openModal()
+    // if (e.target.nodeName !== 'IMG'){
+    //     return;
+    // }
+})
+modal.addEventListener('click',(e)=>{
+    if (e.target===modal){
+        closeModal()
+    }
+})
 
-
-function openModal() {
+function openModal(){
     modal.classList.remove('is-hidden')
     window.addEventListener('keydown',keyClose)
 }
-
-
-function closeModal() {
+function closeModal(){
     modal.classList.add('is-hidden')
+    window.removeEventListener('keydown',keyClose)
 }
-
-let currentImg = 0
 function keyClose(e){
     if (e.code==='Escape'){
         closeModal()
     }
-    if (e.code==="ArrowLeft"){
-        currentImg-=1
-        img.src=galleryItems[currentImg].original
-    }
-    if (e.code==="ArrowRight"){
-        currentImg+=1
-        img.src=galleryItems[currentImg].original
-    }
 }
 
+console.log(marcap)
 
-gallery.addEventListener('click', (e) => {
-        if (e.target.nodeName !== 'IMG') {
-            return
-        }
-        currentImg=Number(e.target.dataset.index)
-        img.src = e.target.dataset.src
-        openModal()
-    }
-)
 
-modal.addEventListener('click', (e) => {
-    if (e.target === e.currentTarget) {
-        closeModal()
-    }
-})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const gallery = document.querySelector('.gallery')
+// const modal = document.querySelector('.modal')
+// const img = modal.querySelector('img')
+//
+// const marcap = galleryItems.map(({preview, original, description},index) =>
+//     `<li class="gallery__item"><img class="gallery__image" src="${preview}" data-src="${original}" data-index="${index}" alt="${description}"></li>`
+// ).join('')
+// gallery.insertAdjacentHTML('beforeend', marcap)
+//
+//
+// function openModal() {
+//     modal.classList.remove('is-hidden')
+//     window.addEventListener('keydown',keyClose)
+// }
+//
+//
+// function closeModal() {
+//     modal.classList.add('is-hidden')
+// }
+//
+// let currentImg = 0
+// function keyClose(e){
+//     if (e.code==='Escape'){
+//         closeModal()
+//     }
+//     if (e.code==="ArrowLeft"){
+//         currentImg-=1
+//         img.src=galleryItems[currentImg].original
+//     }
+//     if (e.code==="ArrowRight"){
+//         currentImg+=1
+//         img.src=galleryItems[currentImg].original
+//     }
+// }
+//
+//
+// gallery.addEventListener('click', (e) => {
+//         if (e.target.nodeName !== 'IMG') {
+//             return
+//         }
+//         currentImg=Number(e.target.dataset.index)
+//         img.src = e.target.dataset.src
+//         openModal()
+//     }
+// )
+//
+// modal.addEventListener('click', (e) => {
+//     if (e.target === e.currentTarget) {
+//         closeModal()
+//     }
+// })
+
+
 
 
 //вивчити що таке диструктиризація і що таке диструктиризація обєкта і масива і додати розмітку в дом
