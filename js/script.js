@@ -97,13 +97,30 @@ function closeModal(){
     modal.classList.add('is-hidden')
     window.removeEventListener('keydown',keyClose)
 }
-function keyClose(e){
-    if (e.code==='Escape'){
+let imgCount = 0
+function keyClose(e) {
+    if (e.code === 'Escape') {
         closeModal()
+    }
+    if (e.code === 'ArrowRight') {
+        imgCount += 1
+        if (imgCount>galleryItems.length){
+            imgCount=0
+        }
+        img.src = galleryItems[imgCount].original
+    }
+
+
+    if (e.code === 'ArrowLeft') {
+        imgCount -= 1
+        if (imgCount<0){
+            imgCount=galleryItems.length-1
+        }
+        img.src = galleryItems[imgCount].original
     }
 }
 
-console.log(marcap)
+
 
 
 
