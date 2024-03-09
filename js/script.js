@@ -68,7 +68,7 @@ const galleryItems = [
 
 const gallery = document.querySelector('.gallery')
 
-const marcap = galleryItems.map(({preview, original,description},index)=>`<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}" data-src="${original}" ></li>`).join('')
+const marcap = galleryItems.map(({preview, original,description},index)=>`<li class="gallery__item"><img class="gallery__image" src="${preview}" alt="${description}" data-src="${original}" data-index="${index}" ></li>`).join('')
 const modal = document.querySelector('.modal')
 const img = document.querySelector('img')
 gallery.insertAdjacentHTML('beforeend',marcap)
@@ -78,6 +78,7 @@ gallery.addEventListener('click',(e)=>{
         return
     }
     img.src=e.target.dataset.src
+    imgCount=Number(e.target.dataset.index)
     openModal()
     // if (e.target.nodeName !== 'IMG'){
     //     return;
@@ -93,10 +94,12 @@ function openModal(){
     modal.classList.remove('is-hidden')
     window.addEventListener('keydown',keyClose)
 }
+
 function closeModal(){
     modal.classList.add('is-hidden')
     window.removeEventListener('keydown',keyClose)
 }
+
 let imgCount = 0
 function keyClose(e) {
     if (e.code === 'Escape') {
@@ -104,9 +107,10 @@ function keyClose(e) {
     }
     if (e.code === 'ArrowRight') {
         imgCount += 1
-        if (imgCount>galleryItems.length){
+        if (imgCount>galleryItems.length-1){
             imgCount=0
         }
+        console.log(imgCount)
         img.src = galleryItems[imgCount].original
     }
 
@@ -116,6 +120,7 @@ function keyClose(e) {
         if (imgCount<0){
             imgCount=galleryItems.length-1
         }
+        console.log(imgCount)
         img.src = galleryItems[imgCount].original
     }
 }
