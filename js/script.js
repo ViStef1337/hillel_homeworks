@@ -5,3 +5,15 @@
 //переробити код щоб картинки були лішками
 //що таке patern
 //використання pritier
+const ul = document.querySelector('ul')
+const cardLi = document.querySelectorAll('.card')
+
+ul.addEventListener('click',()=>{
+
+})
+
+// cardLi.forEach(item=>{
+//     item.addEventListener('click',()=>{
+//         item.classList.add('active')
+//     })
+// })
