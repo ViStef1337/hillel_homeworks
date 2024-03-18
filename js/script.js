@@ -14,15 +14,23 @@ const ul = document.querySelector('ul')
 const cardLiAll = document.querySelectorAll('.card')
 const cardLi = document.querySelector('.card')
 
-const images = ["https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdQ0ZkBDTgWQ5btmwRbLwokNZm14ZhbSZYQ&usqp=CAU"]
+const images = ["https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdQ0ZkBDTgWQ5btmwRbLwokNZm14ZhbSZYQ&usqp=CAU","https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg","https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg"]
 
-const marcap = images.map(item=>{
-    return `<li><img src="${item}"></li>`
+const marcap = images.map((item,index)=>{
+    return ` <li class="card" style="background-image: url('${item}')">
+            <div class="row">
+                <div class="icon">${index+1}</div>
+                <div class="description">
+                    <h4>Lorem ipsum.</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, illum.</p>
+                </div>
+            </div>
+        </li>`
 }).join('')
  console.log(marcap)
-cardLiAll.forEach(li=> li.style.background = 'url(https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg)')
+// cardLiAll.forEach(li=> li.style.background = 'url(https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg)')
 
-
+ul.insertAdjacentHTML('beforeend', marcap)
 
 ul.addEventListener('click',(e)=>{
     if (e.target.nodeName==='UL'){
@@ -31,20 +39,20 @@ ul.addEventListener('click',(e)=>{
 
     const activeElement = ul.querySelector('.active')
     const activeElementText = ul.querySelector('.descriptionActive')
-    const item = e.target.closest('.card')
+    const li = e.target.closest('.card')
 
-    const desc = item.querySelector('.description')
+    const desc = li.querySelector('.description')
 
     if (activeElement){
         activeElement.classList.remove('active')
         activeElementText.classList.remove('descriptionActive')
     }
 
-    if (item===activeElement){
+    if (li===activeElement){
         return;
     }
 
-    item.classList.add('active')
+    li.classList.add('active')
 
     desc.classList.add('descriptionActive')
 
