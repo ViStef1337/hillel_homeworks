@@ -69,8 +69,10 @@ const galleryItems = [
 const ul = document.querySelector('ul')
 const modal = document.querySelector('.modal')
 const img = modal.querySelector('img')
+const nextButton = modal.querySelector('.next')
+const prevButton = modal.querySelector('.prev')
 const marcap = galleryItems.map(({preview,original,description},index)=>{
-    return `<li><img src="${preview}" alt="${description}" data-src="${original}"></li>`
+    return `<li><img src="${preview}" alt="${description}" data-src="${original}" data-index="${index}"></li>`
 }).join('')
 
 ul.insertAdjacentHTML('beforeend', marcap)
@@ -79,6 +81,7 @@ ul.addEventListener('click',(e)=>{
     if (e.target.nodeName!=='IMG'){
         return
     }
+    imgCount = Number(e.target.dataset.index)
     img.src=e.target.dataset.src
     openModal()
 })
@@ -89,7 +92,9 @@ modal.addEventListener('click',(e)=>{
     }
 })
 
+prevButton.addEventListener('click',showPrev)
 
+nextButton.addEventListener('click',showNext)
 
 
 function openModal(){
@@ -102,8 +107,31 @@ function closeModal(){
     window.removeEventListener('keydown',pressKey)
 }
 
+function showNext () {
+    imgCount+=1
+    if (galleryItems.length-1<imgCount){
+        imgCount=0
+    }
+    img.src = galleryItems[imgCount].original
+}
+
+function showPrev () {
+    imgCount-=1
+    if (imgCount<0){
+        imgCount = galleryItems.length-1
+    }
+    img.src = galleryItems[imgCount].original
+}
+
+let imgCount = 0
 function pressKey (e){
     if (e.code==="Escape"){
         closeModal()
+    }
+    if (e.code==='ArrowRight'){
+        showNext()
+    }
+    if (e.code==='ArrowLeft'){
+        showPrev()
     }
 }
