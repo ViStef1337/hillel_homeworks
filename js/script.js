@@ -14,10 +14,12 @@ const ul = document.querySelector('ul')
 const cardLiAll = document.querySelectorAll('.card')
 const cardLi = document.querySelector('.card')
 
-const images = ["https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg"]
+const images = ["https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrdQ0ZkBDTgWQ5btmwRbLwokNZm14ZhbSZYQ&usqp=CAU"]
 
-
-
+const marcap = images.map(item=>{
+    return `<li><img src="${item}"></li>`
+}).join('')
+ console.log(marcap)
 cardLiAll.forEach(li=> li.style.background = 'url(https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg)')
 
 
@@ -49,12 +51,13 @@ ul.addEventListener('click',(e)=>{
 })
 
 
-
+// cardLiAll.forEach(li=> li.style.background = 'url(https://png.pngtree.com/thumb_back/fw800/background/20230529/pngtree-large-wolf-wallpapers-3d-download-wallpaper-3d-image_2672886.jpg)')
+//
 // cardLiAll.forEach(li=>{
 //
 //     li.addEventListener('click',(e)=>{
-//         li.classList.toggle('active')
-//         desc.forEach(item=> item.classList.toggle('description-active'))
+//         li.classList.add('active')
 //     })
+//
 // })
 
