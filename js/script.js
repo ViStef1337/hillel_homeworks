@@ -11,7 +11,7 @@ const page = document.querySelector('.link')
 
 
 let currentValue = 1
-
+prevBtn.style.display = 'none'
 
 ul.addEventListener('click',(e)=>{
 
@@ -26,34 +26,48 @@ ul.addEventListener('click',(e)=>{
 
     e.target.classList.add('active');
     currentValue = e.target.value
+    if (currentValue>1){
+        prevBtn.style.display = 'block'
+    }
+    if (currentValue===1){
+        prevBtn.style.display = 'none'
+    }
+    if (currentValue===5){
+        nextBtn.style.display = 'none'
+    }
+    if (currentValue<5){
+        nextBtn.style.display = 'block'
+    }
     console.log(currentValue)
 })
 
 prevBtn.addEventListener('click',(e)=>{
     const activePage = pagination.querySelector('.active')
-    activePage.classList.remove('active')
+    if (activePage){
+        activePage.classList.remove('active')
+    }
     currentValue--
-    // if (currentValue<1){
-    //     currentValue=pages.length
-    // }
-    // page.value = currentValue
-    console.log(currentValue)
+    const nextLi = document.querySelector(`li[value="${currentValue}"]`);
+    nextLi.classList.add('active')
+    nextBtn.style.display = 'block'
+    if (nextLi.value===1){
+        prevBtn.style.display = 'none'
+    }
 })
 
 
 nextBtn.addEventListener('click',(e)=>{
     const activePage = pagination.querySelector('.active')
-    // const liWithValue3 = document.querySelector('li[value=${}]');
-
     if (activePage){
         activePage.classList.remove('active')
     }
     currentValue++
-    // if (currentValue>pages.length){
-    //     currentValue=1
-    // }
-    // page.value = currentValue
-    console.log(currentValue)
+    const nextLi = document.querySelector(`li[value="${currentValue}"]`);
+    nextLi.classList.add('active')
+    prevBtn.style.display = 'block'
+    if (nextLi.value===5){
+        nextBtn.style.display = 'none'
+    }
 })
 
 
