@@ -10,18 +10,18 @@
 </head>
 <body>
 
-<h1>This is page #1</h1>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A amet at autem cumque ea eius explicabo illo incidunt, ipsum, magni odio officiis porro saepe voluptas voluptate? Ab explicabo fugiat illum?</p>
-
-<div class="pagination">
-    <a href="index.html"><</a>
-    <a href="page2.html" class="active">1</a>
-    <a href="page3.html">2</a>
-    <a href="page3.html">3</a>
-    <a href="page4.html">4</a>
-    <a href="page5.html">5</a>
-    <a href="">></a>
+<div class="container">
+    <div class="pagination">
+        <button class="btn1"> <img src="png/448-arrow.png"> prev</button>
+        <ul>
+            <li class="link active" value="1" onclick="activeLink(event)">1</li>
+            <li class="link" value="2" onclick="activeLink(event)">2</li>
+            <li class="link" value="3" onclick="activeLink(event)">3</li>
+            <li class="link" value="4" onclick="activeLink(event)">4</li>
+            <li class="link" value="5" onclick="activeLink(event)">5</li>
+        </ul>
+        <button class="btn2">next <img src="png/448-arrow.png"> </button>
+    </div>
 </div>
 
 <script src="./js/script.js"></script>
