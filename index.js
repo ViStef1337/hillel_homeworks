@@ -4,6 +4,10 @@ import {
 
 const form = document.querySelector('form')
 
+const ul = document.querySelector('ul')
+
+
+
 form.addEventListener('input',(e)=>{
-    console.log()
+    console.log(e.target.value)
 })
