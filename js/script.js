@@ -6,6 +6,8 @@ const pagination = document.querySelector('.pagination')
 
 const btnPrev = document.querySelector('.btn1')
 
+const activePage = pagination.querySelector('.active')
+
 let currentValue = 1
 
 
@@ -13,11 +15,13 @@ pagination.addEventListener('click',(e)=>{
     if (e.target===pagination){
         return
     }
-    link.forEach(l => {
-        l.classList.remove('active');
-    });
+
+    if (activePage){
+        activePage.classList.remove('active')
+    }
+
     e.target.classList.add('active');
-    currentValue = e.target.value
+    // currentValue = e.target.value
 
 })
 
