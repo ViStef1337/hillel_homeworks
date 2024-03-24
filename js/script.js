@@ -1,28 +1,50 @@
 'use strict'
 
-let link = document.querySelectorAll('.link')
+// let link = document.querySelectorAll('.link')
 
 const pagination = document.querySelector('.pagination')
-
-const btnPrev = document.querySelector('.btn1')
-
+const ul = document.querySelector('ul')
+const prevBtn = document.querySelector('.btn1')
+const nextBtn = document.querySelector('.btn2')
+const pages = document.querySelectorAll('.link')
+const page = document.querySelector('.link')
 const activePage = pagination.querySelector('.active')
 
 let currentValue = 1
 
 
-pagination.addEventListener('click',(e)=>{
-    if (e.target===pagination){
+ul.addEventListener('click',(e)=>{
+    if (e.target.nodeName === 'UL'){
         return
     }
 
     if (activePage){
         activePage.classList.remove('active')
     }
-
     e.target.classList.add('active');
-    // currentValue = e.target.value
+    currentValue = e.target.value
+    console.log(currentPage)
+})
 
+prevBtn.addEventListener('click',(e)=>{
+    activePage.classList.remove('active')
+    currentValue--
+    if (currentValue<1){
+        currentValue=pages.length
+    }
+    page.value = currentValue
+    console.log(currentValue)
+})
+
+
+nextBtn.addEventListener('click',(e)=>{
+    activePage.classList.remove('active')
+    currentValue++
+    if (currentValue>pages.length){
+        currentValue=1
+    }
+    page.value = currentValue
+    console.log(currentValue)
 })
 
 
