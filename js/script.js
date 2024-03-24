@@ -8,42 +8,51 @@ const prevBtn = document.querySelector('.btn1')
 const nextBtn = document.querySelector('.btn2')
 const pages = document.querySelectorAll('.link')
 const page = document.querySelector('.link')
-const activePage = pagination.querySelector('.active')
+
 
 let currentValue = 1
 
 
 ul.addEventListener('click',(e)=>{
+
     if (e.target.nodeName === 'UL'){
         return
     }
 
+    const activePage = pagination.querySelector('.active')
     if (activePage){
         activePage.classList.remove('active')
     }
+
     e.target.classList.add('active');
     currentValue = e.target.value
-    console.log(currentPage)
+    console.log(currentValue)
 })
 
 prevBtn.addEventListener('click',(e)=>{
+    const activePage = pagination.querySelector('.active')
     activePage.classList.remove('active')
     currentValue--
-    if (currentValue<1){
-        currentValue=pages.length
-    }
-    page.value = currentValue
+    // if (currentValue<1){
+    //     currentValue=pages.length
+    // }
+    // page.value = currentValue
     console.log(currentValue)
 })
 
 
 nextBtn.addEventListener('click',(e)=>{
-    activePage.classList.remove('active')
-    currentValue++
-    if (currentValue>pages.length){
-        currentValue=1
+    const activePage = pagination.querySelector('.active')
+    // const liWithValue3 = document.querySelector('li[value=${}]');
+
+    if (activePage){
+        activePage.classList.remove('active')
     }
-    page.value = currentValue
+    currentValue++
+    // if (currentValue>pages.length){
+    //     currentValue=1
+    // }
+    // page.value = currentValue
     console.log(currentValue)
 })
 
