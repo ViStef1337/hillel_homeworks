@@ -33,7 +33,7 @@ function element (totalPages,page){
     // }
 
 
-    for (let pageLength = beforePages; pageLength <= afterPages; pageLength++){
+    for (let pageLength = 1; pageLength <= 5; pageLength++){
         if (pageLength > totalPages){
             continue
         }
@@ -60,7 +60,7 @@ function element (totalPages,page){
     }
     ulTag.innerHTML = liTag
 }
-element(totalPages,5) //calling function with passing values
+element(totalPages,1) //calling function with passing values
 
 
 
