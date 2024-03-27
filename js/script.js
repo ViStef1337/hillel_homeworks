@@ -1,6 +1,6 @@
 'use strict'
 const ulTag = document.querySelector('ul')
-let totalPages = 5
+let totalPages = 21
 
 function element (totalPages,page){
     let liTag = ''
@@ -33,7 +33,7 @@ function element (totalPages,page){
     // }
 
 
-    for (let pageLength = 1; pageLength <= 5; pageLength++){
+    for (let pageLength = beforePages; pageLength <= afterPages; pageLength++){
         if (pageLength > totalPages){
             continue
         }
@@ -67,6 +67,9 @@ element(totalPages,1) //calling function with passing values
 
 
 
+export function qwe(){
+    console.log('hello')
+}
 
 
 
