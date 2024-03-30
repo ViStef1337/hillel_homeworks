@@ -64,3 +64,67 @@ const galleryItems = [
         description: 'Lighthouse Coast Sea',
     },
 ]
+
+const ul = document.querySelector('ul')
+const modal = document.querySelector('.modal')
+const img = document.querySelector('img')
+const marcap = galleryItems.map(({preview,original,description},index)=>{
+    return `<li><img src="${preview}" alt="${description}" data-src="${original}" data-index="${index}"></li>`
+}).join('')
+ul.insertAdjacentHTML('beforeend',marcap)
+
+ul.addEventListener('click',(e)=>{
+    if (e.target.nodeName==='UL'){
+        return
+    }
+    img.src=e.target.dataset.src
+    currentValue=Number(e.target.dataset.index)
+    console.log(currentValue)
+    openModal()
+})
+
+modal.addEventListener('click',(e)=>{
+    if (e.target===e.currentTarget){
+        closeModal()
+    }
+    if (e.target.classList.contains('right')){
+        showNext()
+    }
+    if (e.target.classList.contains('left')){
+        showPrev()
+    }
+})
+
+let currentValue = 0
+
+function openModal(){
+    modal.classList.remove('is-hidden')
+    window.addEventListener('keydown',keyPress)
+}
+
+function closeModal(){
+    modal.classList.add('is-hidden')
+    window.removeEventListener('keydown',keyPress)
+}
+
+function keyPress(e){
+    if (e.code==='Escape'){
+        closeModal()
+    }
+    if (e.code==='ArrowRight'){
+        showNext()
+    }
+    if (e.code==='ArrowLeft'){
+        showPrev()
+        console.log(currentValue)
+    }
+}
+
+function showNext(){
+    currentValue++
+    img.src=galleryItems[currentValue].original
+}
+function showPrev(){
+    currentValue--
+    img.src=galleryItems[currentValue].original
+}
