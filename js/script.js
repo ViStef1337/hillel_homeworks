@@ -67,12 +67,12 @@ const marcap = galleryItems.map(({preview,original,description},index)=>{
 ul.insertAdjacentHTML('beforeend',marcap)
 
 ul.addEventListener('click',(e)=>{
-    if (e.target.nodeName==='UL'){
+    if (e.target.nodeName!=='IMG'){
         return
     }
     img.src=e.target.dataset.src
     currentValue=Number(e.target.dataset.index)
-    console.log(currentValue)
+    console.log(e.target.nodeName)
     openModal()
 })
 
