@@ -13,6 +13,27 @@ const page = document.querySelector('.link')
 let currentValue = 1
 prevBtn.style.display = 'none'
 
+function qwe(totalPages, page) {
+    for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement('li');
+        li.textContent = i;
+        li.setAttribute('value', i);
+        ul.insertAdjacentElement('beforeend', li); // Додаємо елемент li в кінець ul
+        if (i === page) {
+            li.classList.add('active');
+        }
+    }
+}
+function qwe(totalPages,page){
+    for (let i=1;i<=totalPages;i++){
+        const li = document.querySelector('li')
+        ul.insertAdjacentHTML('beforeend',`<li class="link" value="${i}">${i}</li>`)
+        if (i === page) {
+            li.classList.add('active');
+        }
+    }
+}
+qwe(5,3)
 ul.addEventListener('click',(e)=>{
 
     if (e.target.nodeName === 'UL'){
