@@ -14,3 +14,39 @@
     opacity: 0;
     pointer-events: none;
 }
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.container{
+    position: relative;
+    width: 70%;
+}
+
+.left{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.right{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.modalImg{
+    display: block;
+    width: 100%;
+}
+
+span{
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    background: #ffffff91;
+}
