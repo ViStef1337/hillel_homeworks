@@ -32,9 +32,6 @@ function qwe(totalPages,page){
     for (let i=1;i<=totalPages;i++){
         const li = document.querySelector('li')
         ul.insertAdjacentHTML('beforeend',`<li class="link ${i===page ? 'active' : ''}" value="${i}">${i}</li>`)
-        // if (i === page) {
-        //     li.classList.add('active');
-        // }
     }
 }
 qwe(5,currentValue)
