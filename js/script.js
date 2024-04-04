@@ -9,7 +9,8 @@ ulTag.addEventListener('click',(e)=>{
     if (e.target.nodeName==='UL'){
         return
     }
-    console.log(e.target.textContent)
+    const parentElement = e.target.closest('li')
+    element (totalPages,Number(parentElement.dataset.page))
 })
 function element (totalPages,page){
     let liTag = ''
@@ -17,7 +18,7 @@ function element (totalPages,page){
     let beforePages = page - 1 //5 - 1 = 4
     let afterPages = page + 1 //5 + 1 = 6
     if (page > 1){//if page value is grater than 1 then add new li which is previous button
-        liTag += `<li class="btn prev" ><span><i class="fa-solid fa-chevron-left"></i>Prev</span></li>`
+        liTag += `<li class="btn prev" data-page="${page-1}" ><span><i class="fa-solid fa-chevron-left"></i>Prev</span></li>`
     }
 
     for (let pageLength = 1; pageLength <= 5; pageLength++){
@@ -32,11 +33,11 @@ function element (totalPages,page){
         }else { //else leave empty to the activeLi variable
             activeLi = ""
         }
-        liTag += `<li class="numb ${activeLi}" ><span>${pageLength}</span></li>`
+        liTag += `<li class="numb ${activeLi}" data-page="${pageLength}" ><span>${pageLength}</span></li>`
     }
 
     if (page < totalPages){ //if page value is less than totalPages value then add new li which is next button
-        liTag += `<li class="btn next" ><span>Next<i class="fa-solid fa-chevron-right"></i></span></li>`
+        liTag += `<li class="btn next" data-page="${page+1}" ><span>Next<i class="fa-solid fa-chevron-right"></i></span></li>`
     }
     ulTag.innerHTML = liTag
 }
