@@ -1,14 +1,23 @@
 'use strict'
+
+
+
+
 const ulTag = document.querySelector('ul')
 let totalPages = 5
-
+ulTag.addEventListener('click',(e)=>{
+    if (e.target.nodeName==='UL'){
+        return
+    }
+    console.log(e.target.textContent)
+})
 function element (totalPages,page){
     let liTag = ''
     let activeLi;
     let beforePages = page - 1 //5 - 1 = 4
     let afterPages = page + 1 //5 + 1 = 6
     if (page > 1){//if page value is grater than 1 then add new li which is previous button
-        liTag += `<li class="btn prev" onclick="element(totalPages,${page - 1})"><span><i class="fa-solid fa-chevron-left"></i>Prev</span></li>`
+        liTag += `<li class="btn prev" ><span><i class="fa-solid fa-chevron-left"></i>Prev</span></li>`
     }
 
     for (let pageLength = 1; pageLength <= 5; pageLength++){
@@ -23,15 +32,57 @@ function element (totalPages,page){
         }else { //else leave empty to the activeLi variable
             activeLi = ""
         }
-        liTag += `<li class="numb ${activeLi}" onclick="element (totalPages,${pageLength})"><span>${pageLength}</span></li>`
+        liTag += `<li class="numb ${activeLi}" ><span>${pageLength}</span></li>`
     }
 
     if (page < totalPages){ //if page value is less than totalPages value then add new li which is next button
-        liTag += `<li class="btn next" onclick="element(totalPages,${page + 1})"><span>Next<i class="fa-solid fa-chevron-right"></i></span></li>`
+        liTag += `<li class="btn next" ><span>Next<i class="fa-solid fa-chevron-right"></i></span></li>`
     }
     ulTag.innerHTML = liTag
 }
 element(totalPages,1) //calling function with passing values
+
+
+
+
+
+
+
+
+
+// const ulTag = document.querySelector('ul')
+// let totalPages = 5
+//
+// function element (totalPages,page){
+//     let liTag = ''
+//     let activeLi;
+//     let beforePages = page - 1 //5 - 1 = 4
+//     let afterPages = page + 1 //5 + 1 = 6
+//     if (page > 1){//if page value is grater than 1 then add new li which is previous button
+//         liTag += `<li class="btn prev" onclick="element(totalPages,${page - 1})"><span><i class="fa-solid fa-chevron-left"></i>Prev</span></li>`
+//     }
+//
+//     for (let pageLength = 1; pageLength <= 5; pageLength++){
+//         if (pageLength > totalPages){
+//             continue
+//         }
+//         if (pageLength == 0 || pageLength == 0){ // if pageLength is equal to 0 then add +1 to the pageLength value
+//             pageLength = pageLength + 1
+//         }
+//         if (page == pageLength){ //if page value is equal to pageLength then assign the active string in the activeLi variable
+//             activeLi = "active"
+//         }else { //else leave empty to the activeLi variable
+//             activeLi = ""
+//         }
+//         liTag += `<li class="numb ${activeLi}" onclick="element (totalPages,${pageLength})"><span>${pageLength}</span></li>`
+//     }
+//
+//     if (page < totalPages){ //if page value is less than totalPages value then add new li which is next button
+//         liTag += `<li class="btn next" onclick="element(totalPages,${page + 1})"><span>Next<i class="fa-solid fa-chevron-right"></i></span></li>`
+//     }
+//     ulTag.innerHTML = liTag
+// }
+// element(totalPages,1) //calling function with passing values
 
 
 
