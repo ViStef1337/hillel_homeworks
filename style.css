@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    margin: 0;
+    border: 1px solid red;
+}
+
+.container {
+    border: 1px solid red;
+    display: flex;
+    justify-content: center; /* Вирівнюємо контент горизонтально по центру */
+    align-items: center; /* Вирівнюємо контент вертикально по центру */
+    height: calc(100% - 22px); /* Зробимо контейнер на весь екран */
+    /*height: 100%;*/
+}
+
+.text {
+    text-align: center; /* Вирівнюємо текст по центру */
+}
