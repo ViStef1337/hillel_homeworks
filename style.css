@@ -86,10 +86,6 @@ body {
     display: block;
 }
 
-.logo__img {
-    width: 200px;
-}
-
 .menu__list {
     display: flex;
     align-items: center;
