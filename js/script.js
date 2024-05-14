@@ -42,16 +42,41 @@ const job = document.querySelector('#job')
 
 const text = document.querySelector('#info')
 
+const interval = document.querySelector('.interval')
+
 let count = 0
+
+interval.addEventListener('click',()=>{
+    setInterval(() => {
+        count+=1;
+        if (count===reviews.length){
+            count = 0
+        }
+        console.log(count);
+        updateRev()
+    }, 1000);
+})
+
 prevBtn.addEventListener('click',()=>{
     count--
+    if (count<0){
+        count = reviews.length-1
+    }
     updateRev()
+    console.log(count)
 })
 
 nextBtn.addEventListener('click',()=>{
     count++
+    if (count>reviews.length-1){
+        count = 0
+    }
     updateRev()
+    console.log(count)
+    console.log(reviews.length)
 })
+
+
 
 function updateRev(){
     personImg.src=reviews[count].img
@@ -59,3 +84,4 @@ function updateRev(){
     job.textContent=reviews[count].job
     text.textContent=reviews[count].text
 }
+
