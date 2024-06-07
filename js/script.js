@@ -2,6 +2,7 @@
 const form = document.querySelector('.form');
 const input = document.querySelector('.input');
 const ul = document.querySelector('ul');
+const createBtn = document.querySelector('.create')
 let editingLi = null;
 
 const localArr = JSON.parse(localStorage.getItem('toDoList')) || []
@@ -35,7 +36,6 @@ form.addEventListener('submit', (e) => {
         localArr.push(input.value)
         saveLocalStorage (localArr)
     }
-
     input.value = '';
 });
 function createMarcap (arr){
@@ -54,6 +54,7 @@ ul.addEventListener('click', (e) => {
     if (e.target.className === 'redag') {
         input.value = li.firstChild.textContent.trim();
         editingLi = li;
+        createBtn.classList.add('active')
     }
 
     if (e.target.className === 'delete') {
