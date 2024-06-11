@@ -5,12 +5,15 @@ const bigImg = document.querySelector('.big__img')
 
 const local = JSON.parse(localStorage.getItem('city')) || 0
 function upDate(index) {
-
+    ulText.children[index].classList.add('city__text__active')
+    const smallImg = ulText.children[index].querySelector('img')
+    bigImg.src=smallImg.src
 }
+
+upDate(local)
+
 ulCityList.children[local].classList.add('active')
-ulText.children[local].classList.add('city__text__active')
-const smallImg = ulText.children[local].querySelector('img')
-bigImg.src=smallImg.src
+
 
 ulCityList.addEventListener('click',(e)=>{
     if (e.target.nodeName==='UL'){
@@ -26,8 +29,6 @@ ulCityList.addEventListener('click',(e)=>{
     if (activeLiText){
         activeLiText.classList.remove('city__text__active')
     }
-    ulText.children[activeIndex].classList.add('city__text__active')
-    const smallImg = ulText.children[activeIndex].querySelector('img')
-    bigImg.src=smallImg.src
+    upDate(activeIndex)
     localStorage.setItem('city',JSON.stringify(activeIndex))
 })
