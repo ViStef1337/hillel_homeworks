@@ -1,17 +1,64 @@
 'use strict'
+
 const form = document.querySelector('form')
 const ul = document.querySelector('ul')
 const input = document.querySelector('input')
+const birthdayInput = document.querySelector('input[name="birthdate"]')
+
+const friends =[
+    {fullName:'Vitaliy',birthDay:'1999/2/27'},
+    {fullName:'Roman',birthDay:'2022/6/17'},
+    {fullName:'Andriy',birthDay:'2023/6/17'},
+    {fullName:'Oleg',birthDay:'2023/2/15'}
+]
+
+const today = new Date()
+const todayDate = today.getDate()
+const todayMonth = String(today.getMonth()+1).padStart(2,'0')
+const todayYear = today.getFullYear()
+
+birthdayInput.value=`${todayYear}-${todayMonth}-${todayDate}`
+
+const localArr = JSON.parse(localStorage.getItem('friends')) || friends
+
+function saveLocal(arr){
+    localStorage.setItem('friends',JSON.stringify(arr))
+}
+
+function loadLocal(){
+    const storage = JSON.parse(localStorage.getItem('friends'))
+}
+
+loadLocal()
+
+ul.addEventListener('click',(e)=>{
+    if (e.target.nodeName==='UL'){
+        return
+    }
+
+    const li = e.target.closest('.item')
+    console.log(li.firstElementChild.textContent)
+    if (e.target.className==='delete'){
+        const filteredLocalArr = localArr.filter(item=>item.fullName!==li.firstElementChild.textContent)
+        saveLocal(filteredLocalArr)
+        li.remove()
+    }
+})
 
 form.addEventListener('submit',(e)=>{
+
     e.preventDefault()
-    const obj = {fullName:e.target.elements.input.value,birthDay:'2022/6/12'}
+
+    const {birthdate,name} = e.target.elements
+
+    const obj = {fullName:name.value,birthDay:`${birthdate.value}T00:00:00`}
     friends.push(obj)
+    saveLocal(friends)
     createList ()
 })
 
 function createList (){
-    const filteredFriends = friends.filter(item=>{
+    const filteredFriends = localArr.filter(item=>{
         const today = new Date()
         const todayDate = today.getDate()
         const todayMonth = today.getMonth()+1
@@ -30,14 +77,8 @@ function createList (){
     ul.innerHTML=marcap
 }
 
-const friends =[
-    {fullName:'Vitaliy',birthDay:'1999/2/27'},
-    {fullName:'Roman',birthDay:'2022/6/12'},
-    {fullName:'Andriy',birthDay:'2023/6/12'},
-    {fullName:'Oleg',birthDay:'2023/2/15'}
-]
 
-const filteredFriends = friends.filter(item=>{
+const filteredFriends = localArr.filter(item=>{
     const today = new Date()
     const todayDate = today.getDate()
     const todayMonth = today.getMonth()+1
@@ -46,16 +87,15 @@ const filteredFriends = friends.filter(item=>{
     const dayBirthDay = dateBirthday.getDate()
     return todayDate === dayBirthDay && todayMonth===monthBirthDay
 })
-console.log(filteredFriends)
+
 const marcap = filteredFriends.map(item=>{
     const todayYear = new Date().getFullYear()
     const birthYear = new Date(item.birthDay).getFullYear()
     const difference = todayYear-birthYear
-    return `<li>${item.fullName} - ${difference} years</li>`
+    return `<li class="item"><p>${item.fullName}</p> - ${difference} years <button class="delete">delete</button> <button class="redag">redag</button></li>`
 }).join('')
 
 ul.innerHTML=marcap
-
 
 
 // const myBirthDay = new Date('1999/2/27')
