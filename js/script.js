@@ -3,7 +3,22 @@
 const form = document.querySelector('form')
 const ul = document.querySelector('ul')
 const input = document.querySelector('input')
+const nameInput = document.querySelector('input[name="name"]')
 const birthdayInput = document.querySelector('input[name="birthdate"]')
+
+
+nameInput.addEventListener('input',(e)=>{
+
+    localStorage.setItem('inputName',JSON.stringify(nameInput.value))
+
+})
+
+
+function loadLocalInputName(){
+    const localArr = JSON.parse(localStorage.getItem('inputName'))
+    nameInput.value=localArr
+}
+loadLocalInputName()
 
 const friends =[
     {fullName:'Vitaliy',birthDay:'1999/2/27'},
