@@ -3,22 +3,9 @@
 const form = document.querySelector('form')
 const ul = document.querySelector('ul')
 const input = document.querySelector('input')
-const nameInput = document.querySelector('input[name="name"]')
 const birthdayInput = document.querySelector('input[name="birthdate"]')
+const nameInput = document.querySelector('input[name="name"]')
 
-
-nameInput.addEventListener('input',(e)=>{
-
-    localStorage.setItem('inputName',JSON.stringify(nameInput.value))
-
-})
-
-
-function loadLocalInputName(){
-    const localArr = JSON.parse(localStorage.getItem('inputName'))
-    nameInput.value=localArr
-}
-loadLocalInputName()
 
 const friends =[
     {fullName:'Vitaliy',birthDay:'1999/2/27'},
@@ -27,12 +14,17 @@ const friends =[
     {fullName:'Oleg',birthDay:'2023/2/15'}
 ]
 
-const today = new Date()
-const todayDate = today.getDate()
-const todayMonth = String(today.getMonth()+1).padStart(2,'0')
-const todayYear = today.getFullYear()
+const obj = {}
 
-birthdayInput.value=`${todayYear}-${todayMonth}-${todayDate}`
+function getFormatedTodayDate (){
+    const today = new Date()
+    const todayDate = today.getDate()
+    const todayMonth = String(today.getMonth()+1).padStart(2,'0')
+    const todayYear = today.getFullYear()
+    return `${todayYear}-${todayMonth}-${todayDate}`
+}
+
+birthdayInput.value=getFormatedTodayDate ()
 
 const localArr = JSON.parse(localStorage.getItem('friends')) || friends
 
@@ -40,11 +32,6 @@ function saveLocal(arr){
     localStorage.setItem('friends',JSON.stringify(arr))
 }
 
-function loadLocal(){
-    const storage = JSON.parse(localStorage.getItem('friends'))
-}
-
-loadLocal()
 
 ul.addEventListener('click',(e)=>{
     if (e.target.nodeName==='UL'){
@@ -52,7 +39,7 @@ ul.addEventListener('click',(e)=>{
     }
 
     const li = e.target.closest('.item')
-    console.log(li.firstElementChild.textContent)
+
     if (e.target.className==='delete'){
         const filteredLocalArr = localArr.filter(item=>item.fullName!==li.firstElementChild.textContent)
         saveLocal(filteredLocalArr)
@@ -63,7 +50,7 @@ ul.addEventListener('click',(e)=>{
 form.addEventListener('submit',(e)=>{
 
     e.preventDefault()
-
+    localStorage.setItem('inputs',JSON.stringify({}))
     const {birthdate,name} = e.target.elements
 
     const obj = {fullName:name.value,birthDay:`${birthdate.value}T00:00:00`}
@@ -71,6 +58,19 @@ form.addEventListener('submit',(e)=>{
     saveLocal(friends)
     createList ()
 })
+
+
+const localInputs = JSON.parse(localStorage.getItem('inputs'))
+
+form.elements.name.value=localInputs.name || ''
+form.elements.birthdate.value=localInputs.birthdate || getFormatedTodayDate ()
+form.addEventListener('input',(e)=>{
+
+    obj[e.target.name]=e.target.value
+    localStorage.setItem('inputs',JSON.stringify(obj))
+
+})
+
 
 function createList (){
     const filteredFriends = localArr.filter(item=>{
@@ -86,31 +86,31 @@ function createList (){
         const todayYear = new Date().getFullYear()
         const birthYear = new Date(item.birthDay).getFullYear()
         const difference = todayYear-birthYear
-        return `<li>${item.fullName} - ${difference} years</li>`
+        return `<li class="item"><p>${item.fullName}</p> - ${difference} years <button class="delete">delete</button> <button class="redag">redag</button></li>`
     }).join('')
 
     ul.innerHTML=marcap
 }
+createList ()
 
-
-const filteredFriends = localArr.filter(item=>{
-    const today = new Date()
-    const todayDate = today.getDate()
-    const todayMonth = today.getMonth()+1
-    const dateBirthday = new Date(item.birthDay)
-    const monthBirthDay = dateBirthday.getMonth()+1
-    const dayBirthDay = dateBirthday.getDate()
-    return todayDate === dayBirthDay && todayMonth===monthBirthDay
-})
-
-const marcap = filteredFriends.map(item=>{
-    const todayYear = new Date().getFullYear()
-    const birthYear = new Date(item.birthDay).getFullYear()
-    const difference = todayYear-birthYear
-    return `<li class="item"><p>${item.fullName}</p> - ${difference} years <button class="delete">delete</button> <button class="redag">redag</button></li>`
-}).join('')
-
-ul.innerHTML=marcap
+// const filteredFriends = localArr.filter(item=>{
+//     const today = new Date()
+//     const todayDate = today.getDate()
+//     const todayMonth = today.getMonth()+1
+//     const dateBirthday = new Date(item.birthDay)
+//     const monthBirthDay = dateBirthday.getMonth()+1
+//     const dayBirthDay = dateBirthday.getDate()
+//     return todayDate === dayBirthDay && todayMonth===monthBirthDay
+// })
+//
+// const marcap = filteredFriends.map(item=>{
+//     const todayYear = new Date().getFullYear()
+//     const birthYear = new Date(item.birthDay).getFullYear()
+//     const difference = todayYear-birthYear
+//     return `<li class="item"><p>${item.fullName}</p> - ${difference} years <button class="delete">delete</button> <button class="redag">redag</button></li>`
+// }).join('')
+//
+// ul.innerHTML=marcap
 
 
 // const myBirthDay = new Date('1999/2/27')
