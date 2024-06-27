@@ -8,13 +8,15 @@ const nameInput = document.querySelector('input[name="name"]')
 
 
 const friends =[
-    {fullName:'Vitaliy',birthDay:'1999/2/27'},
-    {fullName:'Roman',birthDay:'2022/6/17'},
-    {fullName:'Andriy',birthDay:'2023/6/17'},
-    {fullName:'Oleg',birthDay:'2023/2/15'}
+    // {fullName:'Vitaliy',birthDay:'1999/2/27'},
+    // {fullName:'Roman',birthDay:'2022/6/17'},
+    // {fullName:'Andriy',birthDay:'2023/6/17'},
+    // {fullName:'Oleg',birthDay:'2023/2/15'}
 ]
 
 const obj = {}
+
+let editingLi = null
 
 function getFormatedTodayDate (){
     const today = new Date()
@@ -27,6 +29,7 @@ function getFormatedTodayDate (){
 birthdayInput.value=getFormatedTodayDate ()
 
 const localArr = JSON.parse(localStorage.getItem('friends')) || friends
+
 
 function saveLocal(arr){
     localStorage.setItem('friends',JSON.stringify(arr))
@@ -45,6 +48,12 @@ ul.addEventListener('click',(e)=>{
         saveLocal(filteredLocalArr)
         li.remove()
     }
+    if (e.target.className==='redag'){
+        editingLi=li
+        form.elements.btn.textContent='redag'
+        form.elements.name.value=li.children[0].textContent
+        form.elements.birthdate.value=li.dataset.year.slice(0,10)
+    }
 })
 
 form.addEventListener('submit',(e)=>{
@@ -54,9 +63,23 @@ form.addEventListener('submit',(e)=>{
     const {birthdate,name} = e.target.elements
 
     const obj = {fullName:name.value,birthDay:`${birthdate.value}T00:00:00`}
-    friends.push(obj)
-    saveLocal(friends)
-    createList ()
+    if (editingLi) {
+        const oldText = editingLi.firstChild.textContent.trim()
+        const changedLocalArr = localArr.map(item=>oldText===item.fullName?obj:item)
+        saveLocal(changedLocalArr)
+        createList (changedLocalArr)
+        editingLi.firstChild.textContent = name.value;
+        form.elements.btn.textContent='submit'
+        birthdate.value=getFormatedTodayDate()
+        name.value=''
+        editingLi = null;
+        return
+        }
+    localArr.push(obj)
+    saveLocal(localArr)
+    createList (localArr)
+    e.target.reset()
+    birthdate.value=getFormatedTodayDate()
 })
 
 
@@ -72,7 +95,7 @@ form.addEventListener('input',(e)=>{
 })
 
 
-function createList (){
+function createList (localArr){
     const filteredFriends = localArr.filter(item=>{
         const today = new Date()
         const todayDate = today.getDate()
@@ -86,12 +109,12 @@ function createList (){
         const todayYear = new Date().getFullYear()
         const birthYear = new Date(item.birthDay).getFullYear()
         const difference = todayYear-birthYear
-        return `<li class="item"><p>${item.fullName}</p> - ${difference} years <button class="delete">delete</button> <button class="redag">redag</button></li>`
+        return `<li data-year="${item.birthDay}" class="item"><span class="name">${item.fullName}</span>  &ensp; &ensp;  <span class="year">${difference}</span> <button class="delete">delete</button> <button class="redag">redag</button></li>`
     }).join('')
 
     ul.innerHTML=marcap
 }
-createList ()
+createList (localArr)
 
 // const filteredFriends = localArr.filter(item=>{
 //     const today = new Date()
