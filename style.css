@@ -1,0 +1,11 @@
+.figure{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+.text{
+    font-size: 32px;
+    color: black;
+    font-weight: 1000;
+}
