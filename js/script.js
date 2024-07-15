@@ -68,7 +68,9 @@ let currentTimeInMilliseconds = new Date().getTime();
 const sec = Math.floor(currentTimeInMilliseconds/1000)%60
 
 let intervalId = setInterval(() => {
-    console.log(Math.floor(new Date().getTime()/1000)%60);
+    // console.log(Math.floor(new Date().getTime()/1000)%60);
+    // console.log(Math.floor(new Date().getTime()/1000/60)%60)
+    console.log(Math.floor(new Date().getTime()/1000/60/60)%24-5)
 }, 1000);
-
+console.log(new Date())
 intervalId()
