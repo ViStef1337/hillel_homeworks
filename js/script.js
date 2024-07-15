@@ -29,7 +29,7 @@ const days = document.querySelector('.days')
 const hours = document.querySelector('.hours')
 const minutes = document.querySelector('.minutes')
 const seconds = document.querySelector('.seconds')
-const futureDate = new Date(2024,4,25,8,0)
+const futureDate = new Date(2024,11,31,8,0)
 const text = document.querySelector('.giveaway')
 
 const nameOfDay = weekdays[futureDate.getDay()]
@@ -62,3 +62,13 @@ function logMessage() {
 
 }
 setInterval(logMessage, 1000);
+
+let currentTimeInMilliseconds = new Date().getTime();
+
+const sec = Math.floor(currentTimeInMilliseconds/1000)%60
+
+let intervalId = setInterval(() => {
+    console.log(Math.floor(new Date().getTime()/1000)%60);
+}, 1000);
+
+intervalId()
