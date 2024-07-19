@@ -1,5 +1,7 @@
 'use strict'
 
+'use strict'
+
 const numberButtons = document.querySelectorAll('[data-number]')
 const operationButtons = document.querySelectorAll('[data-operation]')
 const equalButton = document.querySelector('[data-equals]')
@@ -8,51 +10,103 @@ const allClearButton = document.querySelector('[data-all-clear]')
 const previousOperandTextElement = document.querySelector('[data-previous-operand]')
 const currentOperandTextElement = document.querySelector('[data-current-operand]')
 
-let currentOperand  = ''
+let currenOperand  = ''
 let previousOperand = ''
 let currentOperation = null
 
-
-function chooseOperation(operation){
-    currentOperation=operation
-    previousOperand=currentOperand
-    currentOperand=''
+let initialData = {
+    currenOperand: '',
+    previousOperand: '',
+    currentOperation: null
 }
 
-function appendNumber(number){
-    currentOperand=currentOperand+number
+const calculatorData = JSON.parse(localStorage.getItem('calculator')) || initialData
+updateDisplay ()
+function saveLocalStorage(){
+    localStorage.setItem('calculator',JSON.stringify(calculatorData))
 }
 
-function updateDisplay(){
-    currentOperandTextElement.textContent=currentOperand
-    if (currentOperation){
-        previousOperandTextElement.textContent=previousOperand+currentOperation
+function appendNumber (number){
+    if (number.includes('.') && calculatorData.currenOperand.includes('.')) return;
+    calculatorData.currenOperand=calculatorData.currenOperand+number
+}
+
+function updateDisplay (){
+    currentOperandTextElement.textContent=calculatorData.currenOperand
+    if (calculatorData.currentOperation){
+        previousOperandTextElement.textContent=calculatorData.previousOperand+calculatorData.currentOperation
     }else {
         previousOperandTextElement.textContent=''
     }
+    saveLocalStorage()
+}
+
+function chooseOperation (operation){
+    calculatorData.currentOperation=operation
+    calculatorData.previousOperand=calculatorData.currenOperand
+    calculatorData.currenOperand=''
+}
+
+function deleteNumber () {
+    calculatorData.currenOperand=calculatorData.currenOperand.toString().slice(0,-1)
+}
+
+function compute () {
+    let computation = null
+    const prev = Number(calculatorData.previousOperand)
+    const current = Number(calculatorData.currenOperand)
+    switch (calculatorData.currentOperation){
+        case '+':
+            computation=prev+current
+            break
+        case '÷':
+            computation=prev/current
+            break
+        case '-':
+            computation=prev-current
+            break
+        case '*':
+            computation=prev*current
+            break
+        default: return
+    }
+    calculatorData.currenOperand=computation
+    calculatorData.currentOperation=null
+    calculatorData.previousOperand=''
 }
 
 numberButtons.forEach(item=>item.addEventListener('click',(e)=>{
-    appendNumber(e.target.textContent)
-    updateDisplay()
+    appendNumber (e.target.textContent)
+    updateDisplay ()
 }))
 
 operationButtons.forEach(item=>item.addEventListener('click',(e)=>{
-    if (!currentOperand){
+    if (!calculatorData.currenOperand){
         return
     }
-    chooseOperation(e.target.textContent)
-    updateDisplay()
+    if (calculatorData.currenOperand.endsWith('.')){
+        deleteNumber ()
+    }
+    if (calculatorData.previousOperand){
+        compute()
+    }
+    chooseOperation (e.target.textContent)
+    updateDisplay ()
 }))
 
 equalButton.addEventListener('click',(e)=>{
-
-})
-
-deleteButton.addEventListener('click',(e)=>{
-
+    compute ()
+    updateDisplay ()
 })
 
 allClearButton.addEventListener('click',(e)=>{
+    calculatorData.currenOperand  = ''
+    calculatorData.previousOperand = ''
+    calculatorData.currentOperation = null
+    updateDisplay ()
+})
 
+deleteButton.addEventListener('click',(e)=>{
+    deleteNumber ()
+    updateDisplay ()
 })
