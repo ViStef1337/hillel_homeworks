@@ -24,9 +24,9 @@ let intervalId = setInterval(() => {
 //як передавати посилання на функцію як працює і приклади
 
 
-const arr = [1,2,1,2,2,3,3,4,4,5,5]
+// const arr = [1,2,1,2,2,3,3,4,4,5,5]
 
-const qwe = arr.filter((item,index,arr)=>arr.indexOf(item)===index)
+// const qwe = arr.filter((item,index,arr)=>arr.indexOf(item)===index)
 
 // const qwe = []
 // for (let i = 0;i<arr.length;i++){
@@ -34,7 +34,7 @@ const qwe = arr.filter((item,index,arr)=>arr.indexOf(item)===index)
 //         qwe.push(arr[i])
 //     }
 // }
-console.log(qwe)
+
 // arr.forEach((item,index,arr)=>{
 //     console.log(item);console.log(index);console.log(arr)
 // })
@@ -102,3 +102,140 @@ console.log(qwe)
 //     return item % 2 === 0
 // }))
 
+
+// function ownReduce(arr,callBack,initialValue=arr[0]){
+//     for (let i=0;i<arr.length;i++){
+//         initialValue=callBack(arr[i],i,arr)
+//     }
+//     return initialValue
+// }
+//
+//
+// const newArr = arr.reduce((accumulator, currentValue) =>!accumulator.includes(currentValue)?[...accumulator,currentValue]:accumulator, []);
+
+
+// const newArr = arr.reduce((acc,currentValue)=>{
+//     console.log(acc)
+//     if(!acc.includes(currentValue)){
+//         return acc.push(currentValue)
+//     }
+// },[])
+/*
+Потрібно перевірити "same" масиви
+числа з першого у квадраті дорівнюють числам другого
+*/
+
+const a = [2, 144, 19, 161, 19, 144, 19, 11];
+const b = [121, 14641, 20736, 361, 25921, 361, 20736, 361];
+
+b.sort((a,b)=>a-b)
+
+const newA = a.map(item=>Math.pow(item,2))
+
+newA.sort((a,b)=>a-b)
+// console.log(b)
+// console.log(newA)
+
+// const result= newA.every((item,index,arr)=>{
+//     return item===b[index]
+// })
+// console.log(result)
+
+const result= newA.some((item,index)=>{
+    return item===b[index]
+})
+// console.log(!result)
+
+const people = [
+    {
+        name: 'Alex',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Eva',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Ivan',
+        know: ['Jhon', 'Eva'],
+    },
+    {
+        name: 'Jhon',
+        know: [],
+    },
+];
+//нарцис  'Jhon'
+const people2 = [
+    {
+        name: 'Alex',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Jhon',
+        know: [],
+    },
+    {
+        name: 'Eva',
+        know: [],
+    },
+    {
+        name: 'Ivan',
+        know: ['Jhon', 'Eva'],
+    },
+];
+//немає нарциса'
+const people3 = [
+    {
+        name: 'Alex',
+        know: ['Alex', 'Eva'],
+    },
+    {
+        name: 'Jhon',
+        know: [],
+    },
+    {
+        name: 'Eva',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Ivan',
+        know: ['Jhon', 'Eva'],
+    },
+];
+//немає нарциса
+const people4 = [
+    {
+        name: 'Alex',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Jhon',
+        know: ['Eva'],
+    },
+    {
+        name: 'Eva',
+        know: ['Alex', 'Jhon'],
+    },
+    {
+        name: 'Ivan',
+        know: ['Jhon', 'Eva'],
+    },
+];
+//немає нарциса'
+
+//Нарциса знають всі, нарцис незнає нікого
+
+function findNarcis (arr){
+    const obj = arr.find(item=>item.know.length===0)
+    console.log(obj)
+    return arr.every(item=>{
+        if (item.name===obj.name){
+            return true
+        }
+        return item.know.includes(obj.name)
+    })
+
+}
+findNarcis (people)
+
+console.log(findNarcis(people))
